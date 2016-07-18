@@ -1,6 +1,4 @@
-﻿/// <reference path="typings/lodash/lodash.d.ts" />
-
-import _ = require("lodash");
+﻿import _ = require("lodash");
 
 import { Brackets, jsString, splitBrackets } from "./utils";
 

@@ -13,6 +13,11 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@types/cheerio": "^0.17.29",
+    "@types/esprima": "^2.1.28",
+    "@types/glob": "^5.0.29",
+    "@types/jasmine": "^2.2.29",
+    "@types/lodash": "0.0.27",
     "blueimp-md5": "^2.3.0",
     "camelcase": "^2.0.1",
     "cheerio": "^0.20.0",
@@ -20,7 +25,7 @@
     "escodegen": "^1.8.0",
     "esprima": "^2.7.1",
     "glob": "^6.0.3",
-    "lodash": "^3.10.1",
+    "lodash": "^4.13.1",
     "optionator": "^0.8.1",
     "pascalcase": "^0.1.1",
     "react-templates": "git+https://github.com/nippur72/react-templates.git#native-cli"

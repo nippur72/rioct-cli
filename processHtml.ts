@@ -1,6 +1,4 @@
-﻿/// <reference path="typings/cheerio/cheerio.d.ts" />
-
-import rtExtractor from "./rtExtractor";
+﻿import rtExtractor from "./rtExtractor";
 import Context from "./context";
 import CompileError from "./CompileError";
 import processResult from "./processResult";

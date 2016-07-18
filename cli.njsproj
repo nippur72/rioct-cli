@@ -53,16 +53,12 @@
     <TypeScriptCompile Include="rtExtractor.ts" />
     <TypeScriptCompile Include="location.ts" />
     <TypeScriptCompile Include="Emitter.ts" />
-    <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="spec\sampleSpec.ts" />
     <TypeScriptCompile Include="utils.ts" />
     <TypeScriptCompile Include="wrapExpression.ts" />
     <TypeScriptCompile Include="wrapHandler.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Scripts\" />
-    <Folder Include="Scripts\typings\" />
-    <Folder Include="Scripts\typings\node\" />
     <Folder Include="spec\" />
     <Folder Include="spec\support\" />
   </ItemGroup>

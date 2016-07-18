@@ -1,6 +1,4 @@
-﻿/// <reference path="typings/esprima/esprima.d.ts" />
-
-import CompileError from "./CompileError";
+﻿import CompileError from "./CompileError";
 import { getLine } from "./location";
 import { Brackets, printableString, splitBrackets } from "./utils";
 import Context from "./context";

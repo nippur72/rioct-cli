@@ -1,6 +1,4 @@
-﻿/// <reference path="typings/glob/glob.d.ts" />
-
-import processHtml from "./processHtml";
+﻿import processHtml from "./processHtml";
 import Context from "./context";
 import CompileError from "./CompileError";
 import processResult from "./processResult";
