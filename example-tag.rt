@@ -1,0 +1,4 @@
+
+<div>
+   <div class="aaa {((function() {                 try {                   return (&apos;hello&apos;)                }                catch(ex) {                                        console.error(&quot;runtime expression error when evaluating: &apos;hello&apos;\nin file: &apos;example-tag.html&apos;, line 2, col 4\nerror: &quot; + ex.message)                }             }).apply(this))} bbb">Hello</div>   
+</div>

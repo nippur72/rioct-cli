@@ -1,0 +1,33 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "cheerio/cheerio.d.ts": {
+      "commit": "fe563dff3428bac1260d1794e2c2ecf8f097535a"
+    },
+    "lodash/lodash.d.ts": {
+      "commit": "fe563dff3428bac1260d1794e2c2ecf8f097535a"
+    },
+    "minimatch/minimatch.d.ts": {
+      "commit": "bdaf2f0eb19edee26248c80bab4947e9b70e4217"
+    },
+    "glob/glob.d.ts": {
+      "commit": "bdaf2f0eb19edee26248c80bab4947e9b70e4217"
+    },
+    "node/node.d.ts": {
+      "commit": "bdaf2f0eb19edee26248c80bab4947e9b70e4217"
+    },
+    "esprima/esprima.d.ts": {
+      "commit": "4639f126d25956b6a7ddf8462dd4e73101983b85"
+    },
+    "estree/estree.d.ts": {
+      "commit": "4639f126d25956b6a7ddf8462dd4e73101983b85"
+    },
+    "jasmine/jasmine.d.ts": {
+      "commit": "72f0056f69f9a2290d2589c1a692896d24406928"
+    }
+  }
+}
