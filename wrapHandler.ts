@@ -3,7 +3,7 @@ import CompileError from "./CompileError";
 import { getLine } from "./location";
 import { Brackets, printableString, splitBrackets } from "./utils";
 
-export default function wrapHandler(jsCode: string, context: Context)
+export function wrapHandler(jsCode: string, context: Context)
 {   
    var expr = jsCode;   
    

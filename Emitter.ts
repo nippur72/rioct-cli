@@ -2,7 +2,7 @@
 
 import { Brackets, jsString, splitBrackets } from "./utils";
 
-export default class Emitter
+export class Emitter
 {
    emit(rootNode: CheerioStatic): string
    {

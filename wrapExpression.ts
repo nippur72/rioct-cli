@@ -45,7 +45,7 @@ function wrapGenericExpression(jsCode: string, context: Context)
  * for runtime error tracing
  */
 
-export default function wrapExpression(jsCode: string, context: Context, isTextExpression?: boolean): string {
+export function wrapExpression(jsCode: string, context: Context, isTextExpression?: boolean): string {
    var expr = jsCode;   
    
    if(context.options.trace) {
@@ -69,4 +69,6 @@ export default function wrapExpression(jsCode: string, context: Context, isTextE
 
    return expr;
 }
+
+
 

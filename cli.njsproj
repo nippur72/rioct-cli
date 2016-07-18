@@ -37,6 +37,7 @@
     <Content Include="example-tag.html" />
     <Content Include="spec\support\jasmine.json" />
     <Content Include="tsconfig.json" />
+    <TypeScriptCompile Include="regexHelper.ts" />
     <TypeScriptCompile Include="webpack.ts" />
     <TypeScriptCompile Include="processHtml.ts" />
     <TypeScriptCompile Include="CompileError.ts" />
@@ -58,6 +59,7 @@
     <TypeScriptCompile Include="utils.ts" />
     <TypeScriptCompile Include="wrapExpression.ts" />
     <TypeScriptCompile Include="wrapHandler.ts" />
+    <TypeScriptCompile Include="WrapImports.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="spec\" />

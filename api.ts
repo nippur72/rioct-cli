@@ -1,5 +1,5 @@
-﻿import wrapExpression from "./wrapExpression";
-import wrapHandler from "./wrapHandler";
+﻿import { wrapExpression } from "./wrapExpression";
+import { wrapHandler } from "./wrapHandler";
 import { Context } from "./context";
 import { processResult } from "./processResult";
 import CompileError from "./CompileError";

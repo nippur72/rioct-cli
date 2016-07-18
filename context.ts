@@ -16,6 +16,7 @@ export class Context {
    headerNodes: CheerioElement;
    hash: string;
    outName: string;
+   tagName: string;
 
    moveTo(tag)
    {

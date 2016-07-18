@@ -4,7 +4,8 @@ import CompileError from "./CompileError";
 import { processResult } from "./processResult";
 import { getLine } from "./location";
 import processNode from "./api";
-import Emitter from "./Emitter";
+import { Emitter } from "./Emitter";
+import { wrapImports } from "./wrapImports";
 
 import decamelize = require("decamelize");
 import cheerio = require("cheerio");
@@ -29,7 +30,8 @@ function processHtml(html: string, context: Context): processResult {
    var root = rootTags[0] as CheerioElement;
 
    // assign tag name
-   result.tagName = root.name.toLowerCase();     
+   result.tagName = root.name.toLowerCase(); 
+   context.tagName = result.tagName;    
 
    // TODO match with filename.html
    // TODO check for redefinition of standard tags
@@ -57,6 +59,8 @@ function processHtml(html: string, context: Context): processResult {
       // use "react-templates" as external engine         
       jsCode = rtExtractor(rtHtml, context.options.trace, result.tagName, context.options.typescript);       
    }   
+   
+   jsCode = wrapImports(jsCode, context);   
 
    result.outName = context.outName;
 
@@ -72,4 +76,4 @@ function processHtml(html: string, context: Context): processResult {
    return result;
 }
 
-export default processHtml;
+export { processHtml };
