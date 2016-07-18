@@ -15,7 +15,7 @@ export class processResult {
    }
 
    styleCommand(trace: boolean) {
-      if(this.extractedStyle) return `${LibName}.styles.push("${this.sanitizeStyle(this.extractedStyle, trace)}"); ${LibName}.updateStyles();`;
+      if(this.extractedStyle) return `${LibName}.styles.push(${this.sanitizeStyle(this.extractedStyle, trace)}); ${LibName}.updateStyles();`;
       else return "";
    }
 
@@ -24,12 +24,15 @@ export class processResult {
    }
 
    sanitizeStyle(style: string, trace: boolean): string {
+      let compactStyle: string;
+      
       if(trace) {
-         return style;
+         compactStyle = `/*** styles local to tag <${this.tagName}> ***/\r\n\r\n` + style;
       }
       else {
-         return style.split('\n').map(item=>item.trim()).join(' ').split('\r').map(item=>item.trim()).join(' ');
+         compactStyle = style.split('\n').map(item=>item.trim()).join(' ').split('\r').map(item=>item.trim()).join(' ');      
       }
+      return JSON.stringify(compactStyle);
    }
 }
 
