@@ -105,9 +105,15 @@ function processTagNode(tag: CheerioElement, context: Context, r: processResult)
    // replace import with rt-import
    if(tag.name === "import") {
       tag.name = "rt-import";
-      if(!tag.attribs["name"]) {
-         // make default import when name is not specified
+      if(tag.attribs["default"]) {
          tag.attribs["name"] = "default";         
+         tag.attribs["as"] = tag.attribs["default"];         
+         delete tag.attribs["default"];
+      }
+      else if(tag.attribs["require"]) {
+         tag.attribs["name"] = "*";         
+         tag.attribs["as"] = tag.attribs["require"];         
+         delete tag.attribs["require"];
       }
    }
 
