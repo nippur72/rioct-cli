@@ -19,6 +19,7 @@ export default class Emitter
    renderNode(node: CheerioElement): string {
            if(node.type === "text") return this.renderText(node);
       else if(node.type === "tag")  return this.renderTag(node);
+      else return "";
    }
 
    renderTag(node: CheerioElement): string {

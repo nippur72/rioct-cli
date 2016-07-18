@@ -236,7 +236,7 @@ function processAttrib(tag: CheerioElement, attrib: string, value: string, conte
    // process scope
    if(attrib==="rt-scope") {
       let scopes = (tag.attribs["rt-scope"] as string).split(';');
-      let newScopes = [];
+      let newScopes: string[] = [];
       scopes.forEach(scope => {
          scope = scope.trim();
          if(scope) {
@@ -396,7 +396,7 @@ function replaceBrackets(text: string, context: Context, isTextExpression?: bool
 
     var bracket = { open: "{{", close: "}}" };
 
-    var res = [];
+    var res: string[] = [];
 
     // TODO fails to replace {{serverInfo.databaseName ? serverInfo.databaseName : '<non connesso>'}}
 

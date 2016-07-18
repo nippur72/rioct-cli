@@ -3,7 +3,7 @@
    message: string;
    fileName: string;
    loc: {line: number, col: number };
-   snip: string;
+   snip: string|undefined;
 
    constructor(message: string, fileName: string, loc, snip?: string)
    {

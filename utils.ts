@@ -34,7 +34,7 @@ export interface Brackets {
    close: string;
 }
 
-export function splitBrackets(text: string, bracket: Brackets): SplitResult[] {
+export function splitBrackets(text: string, bracket: Brackets): SplitResult[]|null {
 
     var res: SplitResult[] = [];
 
