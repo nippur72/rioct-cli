@@ -1,4 +1,4 @@
-﻿import Context from "./context";
+﻿import { Context } from "./context";
 import CompileError from "./CompileError";
 import { getLine } from "./location";
 import { Brackets, printableString, splitBrackets } from "./utils";

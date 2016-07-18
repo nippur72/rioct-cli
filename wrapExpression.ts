@@ -1,7 +1,7 @@
 ﻿import CompileError from "./CompileError";
 import { getLine } from "./location";
 import { Brackets, printableString, splitBrackets } from "./utils";
-import Context from "./context";
+import { Context } from "./context";
 import esprima = require("esprima");
 
 function wrapAndApply(jsFunctionCode) {

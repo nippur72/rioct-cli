@@ -1,6 +1,6 @@
 ﻿export const LibName = "Rioct";
 
-export default class processResult {
+export class processResult {
    tagName: string;
    functionName: string;
    extractedStyle: string = "";
@@ -14,8 +14,8 @@ export default class processResult {
       return `${LibName}.tags["${this.tagName}"] = render;`;
    }
 
-   styleCommand() {
-      if(this.extractedStyle) return `${LibName}.styles.push("${this.sanitizeStyle(this.extractedStyle)}"); ${LibName}.updateStyles();`;
+   styleCommand(trace: boolean) {
+      if(this.extractedStyle) return `${LibName}.styles.push("${this.sanitizeStyle(this.extractedStyle, trace)}"); ${LibName}.updateStyles();`;
       else return "";
    }
 
@@ -23,8 +23,13 @@ export default class processResult {
       return `var ${LibName} = require('rioct');`;
    }
 
-   sanitizeStyle(style: string): string {
-      return style.split('\n').map(item=>item.trim()).join(' ').split('\r').map(item=>item.trim()).join(' ');
+   sanitizeStyle(style: string, trace: boolean): string {
+      if(trace) {
+         return style;
+      }
+      else {
+         return style.split('\n').map(item=>item.trim()).join(' ').split('\r').map(item=>item.trim()).join(' ');
+      }
    }
 }
 

@@ -1,7 +1,7 @@
 ﻿import rtExtractor from "./rtExtractor";
-import Context from "./context";
+import { Context } from "./context";
 import CompileError from "./CompileError";
-import processResult from "./processResult";
+import { processResult } from "./processResult";
 import { getLine } from "./location";
 import processNode from "./api";
 import Emitter from "./Emitter";
@@ -62,7 +62,7 @@ function processHtml(html: string, context: Context): processResult {
 
    const augmented = jsCode + "\n\n" + result.importRioct() 
                             + "\n"   + result.importCommand() 
-                            + "\n"   + result.styleCommand();
+                            + "\n"   + result.styleCommand(context.options.trace);
    
    //jsCode = escodegen.generate(esprima.parse(jsCode));   
    result.rtSource = rtHtml;

@@ -3,7 +3,7 @@
 //
 
 import rt = require("react-templates/src/reactTemplates");
-import Context from "./context";
+import { Context } from "./context";
 
 function wrapCodeCommonJs(js: string, trace: boolean, tagName: string) 
 {      

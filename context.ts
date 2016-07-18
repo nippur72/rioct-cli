@@ -1,7 +1,11 @@
 ﻿import { getLine } from "./location";
 
-export default class Context {
-   options: any;
+export class Context {
+   options: {
+      trace: boolean;
+      new: boolean;
+      typescript: boolean;
+   };
 
    html: string;
    file: string;

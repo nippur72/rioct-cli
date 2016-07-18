@@ -1,7 +1,7 @@
 ﻿import processHtml from "./processHtml";
-import Context from "./context";
+import { Context } from "./context";
 import CompileError from "./CompileError";
-import processResult from "./processResult";
+import { processResult } from "./processResult";
 import { opts, CommandLineOptions } from "./options";
 import replaceExt from "./replace-extension";
 
