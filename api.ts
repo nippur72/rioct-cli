@@ -282,7 +282,7 @@ function processAttrib(tag: CheerioElement, attrib: string, value: string, conte
       }
       else {         
          context.moveTo(tag);  
-         val = replaceBrackets(value, context, false);            
+         val = replaceBrackets(val, context, false);            
          tag.attribs[attrib] = val;
       }
       return;

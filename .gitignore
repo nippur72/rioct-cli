@@ -6,4 +6,5 @@ typings/
 *.js.map
 *.tag.js
 *.js
+example-tag.rt
 
