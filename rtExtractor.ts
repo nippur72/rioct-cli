@@ -26,7 +26,7 @@ function wrapCodeCommonJs(js: string, trace: boolean, tagName: string)
 var render = function (${stateless}) { 
    try 
    {       
-      return old_render.apply(this) 
+      return old_render.apply(this,arguments) 
    } 
    catch(ex) 
    { 
@@ -74,7 +74,7 @@ var render = function (${stateless})
 { 
    try 
    {       
-      return old_render.apply(this) 
+      return old_render.apply(this,arguments) 
    } 
    catch(ex) 
    { 
