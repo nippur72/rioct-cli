@@ -29,5 +29,11 @@
     "optionator": "^0.8.1",
     "pascalcase": "^0.1.1",
     "react-templates": "git+https://github.com/nippur72/react-templates.git#native-cli"
+  },
+  "devDependencies": {
+    "@types/react": "^0.14.27",
+    "@types/react-dom": "^0.14.14",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1"
   }
 }
