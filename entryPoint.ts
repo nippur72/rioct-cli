@@ -12,7 +12,7 @@ import _ = require("lodash");
 
 import md5 = require("blueimp-md5");
 
-export default function entryPoint(options) {  
+export function entryPoint(options: CommandLineOptions) {  
    // loop over files and collect results
 
    var results: processResult[] = [];

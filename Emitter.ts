@@ -1,4 +1,5 @@
-﻿import _ = require("lodash");
+﻿/*
+import _ = require("lodash");
 
 import { Brackets, jsString, splitBrackets } from "./utils";
 
@@ -74,4 +75,4 @@ export class Emitter
       return true;
    }
 }
-
+*/

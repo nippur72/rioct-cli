@@ -11,7 +11,7 @@ import path = require('path');
 import _ = require("lodash");
 
 import md5 = require("blueimp-md5");
-import entryPoint from "./entryPoint";
+import { entryPoint } from "./entryPoint";
 
 function main(argv) {
    var options;

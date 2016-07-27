@@ -4,7 +4,6 @@ import CompileError from "./CompileError";
 import { processResult } from "./processResult";
 import { getLine } from "./location";
 import processNode from "./api";
-import { Emitter } from "./Emitter";
 import { wrapImports } from "./wrapImports";
 
 import decamelize = require("decamelize");
@@ -49,7 +48,8 @@ function processHtml(html: string, context: Context): processResult {
       
    var jsCode;
    
-   if(context.options["new"]) 
+   /*
+   if(context.options.new) 
    {
       var emitter = new Emitter();
       jsCode = emitter.emit(rootNode);
@@ -58,8 +58,12 @@ function processHtml(html: string, context: Context): processResult {
    {
       // use "react-templates" as external engine         
       jsCode = rtExtractor(rtHtml, context.options.trace, result.tagName, context.options.typescript);       
-   }   
+   }
+   */   
    
+   // use "react-templates" as external engine         
+   jsCode = rtExtractor(rtHtml, context.options.trace, result.tagName, context.options.typescript);       
+
    jsCode = wrapImports(jsCode, context);   
 
    result.outName = context.outName;

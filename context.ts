@@ -1,12 +1,8 @@
 ﻿import { getLine } from "./location";
+import { CommandLineOptions } from "./options";
 
 export class Context {
-   options: {
-      trace: boolean;
-      new: boolean;
-      typescript: boolean;
-   };
-
+   options: CommandLineOptions;
    html: string;
    file: string;
    tag: CheerioElement;
