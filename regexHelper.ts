@@ -6,6 +6,14 @@ export function zeroOrOne(s: string) {
    return "(?:"+s+")?";
 }
 
+export function zeroOrMore(s: string) {
+   return "(?:"+s+")*";
+}
+
+export function OneOrMore(s: string) {
+   return "(?:"+s+")+";
+}
+
 export function text(s: string) {
    let result = "";
    for(let t=0;t<s.length;t++) {
