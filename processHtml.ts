@@ -1,6 +1,6 @@
 ﻿import rtExtractor from "./rtExtractor";
 import { Context } from "./context";
-import CompileError from "./CompileError";
+import { CompileError } from "./CompileError";
 import { processResult } from "./processResult";
 import { getLine } from "./location";
 import processNode from "./api";

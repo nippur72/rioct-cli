@@ -1,4 +1,4 @@
-﻿export default class CompileError
+﻿export class CompileError
 {
    message: string;
    fileName: string;

@@ -2,7 +2,7 @@
 import { wrapHandler } from "./wrapHandler";
 import { Context } from "./context";
 import { processResult } from "./processResult";
-import CompileError from "./CompileError";
+import { CompileError } from "./CompileError";
 import eventList from "./react-events";
 
 import { getLine } from "./location";
