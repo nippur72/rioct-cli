@@ -14,6 +14,14 @@ export function OneOrMore(s: string) {
    return "(?:"+s+")+";
 }
 
+export function startOfLine() {
+   return "^";
+}
+
+export function endOfLine(s: string) {
+   return "$";
+}
+
 export function text(s: string) {
    let result = "";
    for(let t=0;t<s.length;t++) {
@@ -40,6 +48,7 @@ export function text(s: string) {
    return result;
 }
 
+/*
 export function matches(regex: RegExp, text: string) {
    let res: any[] = [];
 
@@ -57,3 +66,4 @@ export function matches(regex: RegExp, text: string) {
 
     return res;
 }
+*/

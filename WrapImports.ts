@@ -1,4 +1,4 @@
-﻿import { capture, zeroOrOne, text, matches } from "./regexHelper";
+﻿import { capture, zeroOrOne, text } from "./regexHelper";
 import { Context } from "./context";
 import { printableString } from "./utils";
 
