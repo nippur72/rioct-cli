@@ -4,7 +4,7 @@ import { Context } from "./context";
 import { processResult } from "./processResult";
 import { CompileError } from "./CompileError";
 import eventList from "./react-events";
-
+import { cleanBrackets, replaceBrackets } from "./brackets";
 import { getLine } from "./location";
 
 import pascalcase = require("pascalcase");
@@ -398,71 +398,6 @@ function getBrackets(brackets) {
 }
 */
 
-function replaceBrackets(text: string, context: Context, isTextExpression?: boolean): string {
-
-    var bracket = { open: "{{", close: "}}" };
-
-    var res: string[] = [];
-
-    // TODO fails to replace {{serverInfo.databaseName ? serverInfo.databaseName : '<non connesso>'}}
-
-    var regex = new RegExp('([\\s\\S]*?)' + bracket.open + '([\\s\\S]*?)' + bracket.close + '([\\s\\S]*?)|([\\s\\S]*)', 'g');
-
-    // a syntax error might capture delimiters, so we check it
-    var badCaptured = new RegExp('(' + bracket.open + ')|(' + bracket.close + ')');
-
-    for (;;) {
-        var match = regex.exec(text);
-        if (match === null) {
-            break;
-        }
-        if (match.index === regex.lastIndex) {
-            regex.lastIndex++;
-        }
-
-        // check for bad captured delimiters
-        var error = match[1] !== undefined && badCaptured.test(match[1]) ||
-                    match[3] !== undefined && badCaptured.test(match[3]) ||
-                    match[4] !== undefined && badCaptured.test(match[4]);
-
-        if (error) {
-            throw new CompileError(`Failed to replace brackets in`,
-                                    context.file, 
-                                    getLine(context.html, context.tag), 
-                                    text);            
-        }
-        
-        if (match[1]) res.push(match[1]); 
-        if (match[2]) res.push("{" + wrapExpression(match[2], context, isTextExpression) + "}"); 
-        if (match[3]) res.push(match[3]); 
-        if (match[4]) res.push(match[4]); 
-    }
-
-    return res.join('');
-}
-
-// 
-
-
-/**
- * Makes brackets optional for reserved attributes
- * by simply eliminating them if present
- */
-
-function cleanBrackets(text: string) {
-    var bracket = { open: "{{", close: "}}" };    
-
-    var regex = new RegExp('^' + bracket.open + '([\\s\\S]*?)' + bracket.close + '$', 'g');
-
-    var match = regex.exec(text);
-
-    if(match === null) return text;
-    if(match[1]) return match[1];
-    return "";
-}
-
-// rt-debug = (function(){debugger})() as debug
-// rt-execute
 
 
 export default processNode;
