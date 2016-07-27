@@ -400,5 +400,5 @@ function getBrackets(brackets) {
 
 
 
-export default processNode;
+export { processNode };
 

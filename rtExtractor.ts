@@ -95,7 +95,7 @@ export = render;`;
 }
 
 
-export default function extract(rtHtml: string, trace: boolean, tagName: string, typeScriptOutput: boolean): string
+export function extract(rtHtml: string, trace: boolean, tagName: string, typeScriptOutput: boolean): string
 {
    var rtOptions = {
          modules: typeScriptOutput ? 'typescript' : 'commonjs',

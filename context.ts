@@ -1,5 +1,6 @@
 ﻿import { getLine } from "./location";
 import { CommandLineOptions } from "./options";
+import { Brackets } from "./brackets";
 
 export class Context {
    options: CommandLineOptions;
@@ -13,6 +14,7 @@ export class Context {
    hash: string;
    outName: string;
    tagName: string;
+   brackets: Brackets;
 
    moveTo(tag)
    {

@@ -14,4 +14,4 @@ var eventList = [
    "onScroll onSelect onTouchCancel onTouchEnd onTouchMove onTouchStart onWheel "
 ].join('').split(' ');
 
-export default eventList;
+export { eventList };

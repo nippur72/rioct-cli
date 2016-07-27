@@ -3,7 +3,7 @@ import { Context } from "./context";
 import { CompileError } from "./CompileError";
 import { processResult } from "./processResult";
 import { opts, CommandLineOptions } from "./options";
-import replaceExt from "./replace-extension";
+import { replaceExtension as replaceExt } from "./replace-extension";
 
 import glob = require("glob");
 import fs = require("fs");
@@ -12,7 +12,7 @@ import _ = require("lodash");
 
 import md5 = require("blueimp-md5");
 
-export default function webpack(source, options, fileName): string {  
+export function webpack(source: string, options: CommandLineOptions, fileName: string): string {  
    console.log(`rioct convert: ${path.basename(fileName)}`);       
 
    if(path.extname(fileName) !== '.html') {
