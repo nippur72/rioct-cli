@@ -8,3 +8,4 @@ typings/
 *.js
 example-tag.rt
 
+.ntvs_analysis.dat
