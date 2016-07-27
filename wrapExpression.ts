@@ -1,6 +1,7 @@
 ﻿import CompileError from "./CompileError";
 import { getLine } from "./location";
-import { Brackets, printableString, splitBrackets } from "./utils";
+import { printableString } from "./utils";
+import { Brackets, splitBrackets } from "./brackets";
 import { Context } from "./context";
 import esprima = require("esprima");
 

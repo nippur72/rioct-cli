@@ -38,6 +38,7 @@
     <Content Include="spec\support\jasmine.json" />
     <Content Include="tsconfig.json" />
     <TypeScriptCompile Include="regexHelper.ts" />
+    <TypeScriptCompile Include="brackets.ts" />
     <TypeScriptCompile Include="webpack.ts" />
     <TypeScriptCompile Include="processHtml.ts" />
     <TypeScriptCompile Include="CompileError.ts" />

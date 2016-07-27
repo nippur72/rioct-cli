@@ -1,7 +1,8 @@
 ﻿import { Context } from "./context";
 import CompileError from "./CompileError";
 import { getLine } from "./location";
-import { Brackets, printableString, splitBrackets } from "./utils";
+import { printableString } from "./utils";
+import { Brackets, splitBrackets } from "./brackets";
 
 export function wrapHandler(jsCode: string, context: Context)
 {   
