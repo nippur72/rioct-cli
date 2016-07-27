@@ -11,15 +11,21 @@ export function text(s: string) {
    for(let t=0;t<s.length;t++) {
       let c = s[t];
       switch(c) {
+         case "\\": c = "\\\\"; break;
+         case "^": c = "\\^"; break;
+         case "$": c = "\\$"; break;
          case "(": c = "\\("; break;
          case ")": c = "\\)"; break;
          case "[": c = "\\["; break;
          case "]": c = "\\]"; break;
+         case "{": c = "\\{"; break;
+         case "}": c = "\\}"; break;
          case ".": c = "\\."; break;
          case "*": c = "\\*"; break;
          case "+": c = "\\+"; break;
          case "-": c = "\\-"; break;
          case "?": c = "\\?"; break;
+         case "|": c = "\\|"; break;
       }
       result = result + c;
    }
