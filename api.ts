@@ -3,13 +3,13 @@ import { wrapHandler } from "./wrapHandler";
 import { Context } from "./context";
 import { processResult } from "./processResult";
 import { CompileError } from "./CompileError";
-import eventList from "./react-events";
+import { eventList } from "./react-events";
 import { cleanBrackets, replaceBrackets } from "./brackets";
 import { getLine } from "./location";
 
 import pascalcase = require("pascalcase");
 
-import replaceAll from "./replaceAll";
+import { replaceAll } from "./replaceAll";
 
 import _ = require("lodash");
 

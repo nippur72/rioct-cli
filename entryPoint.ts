@@ -3,7 +3,7 @@ import { Context } from "./context";
 import { CompileError } from "./CompileError";
 import { processResult } from "./processResult";
 import { opts, CommandLineOptions } from "./options";
-import replaceExt from "./replace-extension";
+import { replaceExtension as replaceExt } from "./replace-extension";
 
 import glob = require("glob");
 import fs = require("fs");
