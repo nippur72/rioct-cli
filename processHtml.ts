@@ -5,12 +5,16 @@ import { processResult } from "./processResult";
 import { getLine } from "./location";
 import { processNode }from "./api";
 import { wrapImports } from "./wrapImports";
+import { parseBracketCliOption } from "./brackets";
 
 import decamelize = require("decamelize");
 import cheerio = require("cheerio");
 import _ = require("lodash");
 
 function processHtml(html: string, context: Context): processResult {
+
+   // gets bracket system from command line option
+   context.brackets = parseBracketCliOption(context.options.brackets);
 
    var result = new processResult();
    

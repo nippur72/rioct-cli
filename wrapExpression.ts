@@ -43,6 +43,10 @@ function wrapGenericExpression(jsCode: string, context: Context)
  * Syntatically checks a javascript expression and 
  * optionally wraps it in a debug wrapper function 
  * for runtime error tracing
+ * 
+ * @param jsCode the javascript code as a string
+ * @param context
+ * @param isTextExpression when true the expression is additionally checked to be string or num
  */
 
 export function wrapExpression(jsCode: string, context: Context, isTextExpression?: boolean): string {

@@ -10,7 +10,7 @@ export class processResult {
    fileName: string;
    outName: string;
 
-   importCommand() {
+   registerTag() {
       return `${LibName}.tags["${this.tagName}"] = render;`;
    }
 

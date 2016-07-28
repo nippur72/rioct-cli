@@ -19,8 +19,9 @@ var optsConfig =
       { option: 'help', alias: 'h', type: 'Boolean', description: 'Show help.' },      
       { option: 'trace', alias: 't', type: 'Boolean', default: 'false', required: false, description: 'Catches all runtime errors and logs them to the console.'},
       //{ option: 'new', alias: 'n', type: 'Boolean', required: false, description: 'Use new emit engine (do not rely on react-templates).'},
-      { option: 'typescript', type: 'Boolean', default: 'false', required: false, description: '(experimental) Output typescript files.'}
+      { option: 'typescript', type: 'Boolean', default: 'false', required: false, description: '(experimental) Output typescript files.'},
       { option: 'use-rioct-runtime', type: 'Boolean', default: 'false', required: false, description: 'uses "rioct" runtime for extra features'},
+      { option: 'brackets', type: 'String', default: '{ }', required: false, description: 'Character used to delimit template expressions (separated by a space).'}
    ]
 };
 
@@ -30,9 +31,21 @@ interface CommandLineOptions {
    _: string[];
    trace: boolean;
    //new: boolean;
-   typescript: boolean;   
+   typescript: boolean;
+   brackets: string; 
    useRioctRuntime: boolean;  
 }
 
-export { opts, CommandLineOptions };
+function defaultOptions(): CommandLineOptions
+{
+   return {
+      _: [],
+      trace: false,
+      typescript: false,
+      brackets: "{ }", 
+      useRioctRuntime: false
+   };
+}
+
+export { opts, CommandLineOptions, defaultOptions };
 

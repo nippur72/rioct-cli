@@ -5,7 +5,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>cli</Name>
     <RootNamespace>cli</RootNamespace>
-    <ScriptArguments>example-tag.html -t </ScriptArguments>
+    <ScriptArguments>example-tag.html -t --brackets "{ }" </ScriptArguments>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -39,9 +39,11 @@
     <Content Include="tsconfig.json" />
     <TypeScriptCompile Include="regexHelper.ts" />
     <TypeScriptCompile Include="brackets.ts" />
+    <TypeScriptCompile Include="spec\makeInlineComponent.ts" />
+    <TypeScriptCompile Include="spec\parseBracketCliOptionSpec.ts" />
     <TypeScriptCompile Include="spec\cleanBracketsSpec.ts" />
     <TypeScriptCompile Include="spec\componentSpec.ts" />
-    <TypeScriptCompile Include="spec\splitBracketsSpec.ts" />
+    <TypeScriptCompile Include="spec\replaceBracketsSpec.ts" />
     <TypeScriptCompile Include="webpack.ts" />
     <TypeScriptCompile Include="processHtml.ts" />
     <TypeScriptCompile Include="CompileError.ts" />
