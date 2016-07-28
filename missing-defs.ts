@@ -50,3 +50,14 @@ declare module "blueimp-md5" {
    function md5(value: string, key: string): string;
    export = md5;
 }
+                                  
+declare module "react-dom/server" {
+   export function renderToString(c: any): string;   
+   export function renderToStaticMarkup(c: any): string;   
+}
+
+
+declare module "eval" {
+   function eval(s: string, fileName?:string, scope?: any, includeGlobals?: boolean): any;
+   export = eval;
+}
