@@ -3,6 +3,7 @@ import { Context } from "./context";
 import { CompileError } from "./CompileError";
 import { getLine } from "./location";
 import { wrapExpression } from "./wrapExpression";
+import rh = require("./regexHelper");
 
 export interface SplitResult {
    text: string;
@@ -165,12 +166,12 @@ export function replaceBrackets(text: string, context: Context, isTextExpression
  * by simply eliminating them if present
  */
 
-export function cleanBrackets(text: string) {
-    var bracket = { open: "{{", close: "}}" };    
+export function cleanBrackets(text: string, bracket: Brackets): string 
+{  
+    const anytext = rh.capture("[\\s\\S]*?");
+    const regex = new RegExp(rh.startOfLine() + rh.text(bracket.open) + anytext + rh.text(bracket.close) + rh.endOfLine(), 'g');
 
-    var regex = new RegExp('^' + bracket.open + '([\\s\\S]*?)' + bracket.close + '$', 'g');
-
-    var match = regex.exec(text);
+    const match = regex.exec(text);
 
     if(match === null) return text;
     if(match[1]) return match[1];

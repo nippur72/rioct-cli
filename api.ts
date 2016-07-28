@@ -181,7 +181,7 @@ function replaceAttribute(tag: CheerioElement, oldName: string, newName: string,
                               context.file, 
                               getLine(context.html, tag) );
    }
-   tag.attribs[newName] = cleanBrackets(tag.attribs[oldName]);
+   tag.attribs[newName] = cleanBrackets(tag.attribs[oldName], context.brackets);
    delete tag.attribs[oldName];            
 }
 
@@ -277,10 +277,10 @@ function processAttrib(tag: CheerioElement, attrib: string, value: string, conte
       // substitute _this_ prefix in local <style>
       val = replaceAll(val, "_this_", `_${context.hash}_`);
    
-      if(cleanBrackets(val) !== val) {
+      if(cleanBrackets(val, context.brackets) !== val) {
          // class + brackets found, turn it into rt-class                  
          context.moveTo(tag);  
-         val = cleanBrackets(val);                
+         val = cleanBrackets(val, context.brackets);                
          val = wrapExpression("("+val+")", context);         
          attrib = "rt-class";
          tag.attribs[attrib] = val;         
@@ -307,7 +307,7 @@ function processAttrib(tag: CheerioElement, attrib: string, value: string, conte
       var vtrue  = attrib === "show" ? "''"     : "'none'";
       var vfalse = attrib === "show" ? "'none'" : "''";
       context.moveTo(tag);
-      var cond = wrapExpression(cleanBrackets(value), context);      
+      var cond = wrapExpression(cleanBrackets(value, context.brackets), context);      
       var propToAdd = `{style: { display: (${cond}) ? ${vtrue} : ${vfalse} } }`;
 
       var hasProps = tag.attribs["rt-props"] ? true : false;
@@ -337,7 +337,7 @@ function processAttrib(tag: CheerioElement, attrib: string, value: string, conte
 
       // filter brackets for unknown event handlers too
       if(!known) {
-         tag.attribs[attrib] = cleanBrackets(tag.attribs[attrib]);  
+         tag.attribs[attrib] = cleanBrackets(tag.attribs[attrib], context.brackets);  
       }
       
       var handler = tag.attribs[attrib];
