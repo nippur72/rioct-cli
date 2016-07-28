@@ -18,7 +18,7 @@ export function startOfLine() {
    return "^";
 }
 
-export function endOfLine(s: string) {
+export function endOfLine() {
    return "$";
 }
 
