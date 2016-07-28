@@ -12,11 +12,18 @@ import _ = require("lodash");
 
 import md5 = require("blueimp-md5");
 
-export function webpack(source: string, options: CommandLineOptions, fileName: string): string {  
-   console.log(`rioct convert: ${path.basename(fileName)}`);       
+export function webpack(source: string, options: CommandLineOptions, fileName?: string|undefined): string 
+{  
+   const write = fileName !== undefined;
+   fileName = fileName || "file";
 
-   if(path.extname(fileName) !== '.html') {
-      throw `only .html files can be processed`;
+   if(write) 
+   {
+      console.log(`rioct convert: ${path.basename(fileName)}`);       
+
+      if(path.extname(fileName) !== '.html') {
+         throw `only .html files can be processed`;
+      }
    }
 
    const html = source;
@@ -35,12 +42,15 @@ export function webpack(source: string, options: CommandLineOptions, fileName: s
    result.fileName = fileName;
    result.outName = outName;
 
-   // writes to disk .js compiled template        
-   fs.writeFileSync(outName, result.rtTemplateAugumented);   
+   if(write) 
+   {
+      // writes to disk .js compiled template        
+      fs.writeFileSync(outName, result.rtTemplateAugumented);   
 
-   // writes to disk .rt source template        
-   const outRtName = replaceExt(fileName, ".rt");
-   fs.writeFileSync(outRtName, result.rtSource); 
+      // writes to disk .rt source template        
+      const outRtName = replaceExt(fileName, ".rt");
+      fs.writeFileSync(outRtName, result.rtSource); 
+   }
 
    return result.rtTemplateAugumented;
 }
