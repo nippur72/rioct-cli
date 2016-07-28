@@ -68,9 +68,14 @@ function processHtml(html: string, context: Context): processResult {
 
    result.outName = context.outName;
 
-   const augmented = jsCode + "\n\n" + result.importRioct() 
-                            + "\n"   + result.importCommand() 
-                            + "\n"   + result.styleCommand(context.options.trace);
+   let augmented = jsCode;
+   
+   if(context.options.useRioctRuntime)
+   {   
+      augmented += "\n\n" + result.importRioct() +
+                   "\n"   + result.registerTag() +
+                   "\n"   + result.styleCommand(context.options.trace);
+   }
    
    //jsCode = escodegen.generate(esprima.parse(jsCode));   
    result.rtSource = rtHtml;
