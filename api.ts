@@ -201,6 +201,22 @@ function processAttrib(tag: CheerioElement, attrib: string, value: string, conte
       return;      
    }    
    
+   // "stateless" attribute on the root tag
+   if(attrib === "stateless") {
+      /*
+      if(tag.parentNode !== null) {         
+         throw new CompileError(`'stateless' can be placed only on the root node in <${context.tag}>`,
+                                 context.file, 
+                                 getLine(context.html, tag) );
+      }      
+      */
+      if(tag.parentNode === null) {         
+         delete tag.attribs[attrib];
+         tag.attribs["rt-stateless"] = "";
+      }
+      return;      
+   }    
+
    // restore back old React's string refs 
    if(attrib === "ref") {            
       // only if it's a string constant (does not contains parens)
