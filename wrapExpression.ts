@@ -1,6 +1,6 @@
 ﻿import { CompileError } from "./CompileError";
 import { getLine } from "./location";
-import { printableString } from "./utils";
+import { printableString, printableRelativeFileName as file } from "./utils";
 import { Context } from "./context";
 import esprima = require("esprima");
 
@@ -14,12 +14,12 @@ function wrapTextExpression(jsCode: string, context: Context)
                try {
                   var $expr = (${jsCode});
                   if($expr !== null && typeof $expr !== 'string' && typeof $expr !== 'number' && typeof $expr !== 'undefined') {
-                     console.error("runtime error when evaluating: ${printableString(jsCode)}\\nin file: '${printableString(context.file)}', line ${context.line}, col ${context.column}\\nexpression must be of type 'string' or 'number', instead is '"+(typeof $expr)+"'");
+                     console.error("runtime error when evaluating: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\nexpression must be of type 'string' or 'number', instead is '"+(typeof $expr)+"'");
                   }
                   return $expr;
                }
                catch(ex) {                     
-                  console.error("runtime error when evaluating: ${printableString(jsCode)}\\nin file: '${printableString(context.file)}', line ${context.line}, col ${context.column}\\n" + ex.message)
+                  console.error("runtime error when evaluating: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\n" + ex.message)
                }
             }`;
    return wrapAndApply(fn);
@@ -32,7 +32,7 @@ function wrapGenericExpression(jsCode: string, context: Context)
                   return (${jsCode})
                }
                catch(ex) {                     
-                  console.error("runtime expression error when evaluating: ${printableString(jsCode)}\\nin file: '${printableString(context.file)}', line ${context.line}, col ${context.column}\\nerror: " + ex.message)
+                  console.error("runtime expression error when evaluating: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\nerror: " + ex.message)
                }
             }`;
 

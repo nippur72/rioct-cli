@@ -1,7 +1,8 @@
 ﻿import { Context } from "./context";
 import { CompileError } from "./CompileError";
 import { getLine } from "./location";
-import { printableString } from "./utils";
+import { printableString, printableRelativeFileName as file } from "./utils";
+
 
 export function wrapHandler(jsCode: string, context: Context)
 {   
@@ -16,7 +17,7 @@ export function wrapHandler(jsCode: string, context: Context)
                   }
                   catch(ex) 
                   {                     
-                     console.error("runtime error when calling event: ${printableString(jsCode)}\\nin file: '${context.file}', line ${context.line}, col ${context.column}\\nerror: " + ex.message)
+                     console.error("runtime error when calling event: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\nerror: " + ex.message)
                   }
               })`;
       expr = expr.split("\n").join(" ");
