@@ -35,18 +35,18 @@ function wrapGenericExpression(jsCode: string, context: Context)
 
    let fn =`function() { 
                try {
-                  var $expr = (${jsCode});
+                  var $expr = (${jsCode})
                   if(${wrongType}) {
-                     console.error("runtime error when evaluating: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\nexpression must be of type 'string' or 'number', instead is '"+(typeof $expr)+"'");
+                     console.error("runtime error when evaluating: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\nexpression must be of type 'string' or 'number', instead is '"+(typeof $expr)+"'")
                   }
-                  return $expr;
+                  return $expr
                }
                catch(ex) {                     
                   console.error("runtime expression error when evaluating: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\nerror: " + ex.message)
                }
             }`;
 
-   return wrapAndApply(fn).split("\n").join(" ");
+   return wrapAndApply(fn).split("\n").join("\n");  // newlines are necessary: code can't use ";" because of "scope" syntax
 }
 
 /**
