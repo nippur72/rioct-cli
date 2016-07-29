@@ -21,7 +21,8 @@ var optsConfig =
       //{ option: 'new', alias: 'n', type: 'Boolean', required: false, description: 'Use new emit engine (do not rely on react-templates).'},
       { option: 'typescript', type: 'Boolean', default: 'false', required: false, description: '(experimental) Output typescript files.'},
       { option: 'use-rioct-runtime', type: 'Boolean', default: 'false', required: false, description: 'uses "rioct" runtime for extra features'},
-      { option: 'brackets', type: 'String', default: '{ }', required: false, description: 'Character used to delimit template expressions (separated by a space).'}
+      { option: 'brackets', type: 'String', default: '{ }', required: false, description: 'Character used to delimit template expressions (separated by a space).'},
+      { option: 'normalize-html-whitespace', type: 'Boolean', default: 'true', required: false, description: 'Remove repeating whitespace from HTML text.'}
    ]
 };
 
@@ -33,7 +34,8 @@ interface CommandLineOptions {
    //new: boolean;
    typescript: boolean;
    brackets: string; 
-   useRioctRuntime: boolean;  
+   useRioctRuntime: boolean;
+   normalizeHtmlWhitespace: boolean;  
 }
 
 function defaultOptions(): CommandLineOptions
@@ -43,7 +45,8 @@ function defaultOptions(): CommandLineOptions
       trace: false,
       typescript: false,
       brackets: "{ }", 
-      useRioctRuntime: false
+      useRioctRuntime: false,
+      normalizeHtmlWhitespace: true
    };
 }
 

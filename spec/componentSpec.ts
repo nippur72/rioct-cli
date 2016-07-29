@@ -34,3 +34,22 @@ describe("default brackets", ()=> {
    });
 });
 
+describe("CLI option --normalize-html-whitespace", ()=> {
+   it("does trim spaces when turned on", ()=>{          
+      const template = "<test stateless>\n    Hello   \n   {props.name}    </test>";
+      const props = {name: "Nino"};
+      const rendered = render(template, props);      
+      const expected = "<div> Hello Nino </div>";
+      expect(rendered).toEqual(expected);      
+   });
+
+   it("does not trim when turned off", ()=>{          
+      const options = defaultOptions(); 
+      options.normalizeHtmlWhitespace = false;
+      const template = "<test stateless>\n    Hello   \n   {props.name}    </test>";
+      const props = {name: "Nino"};
+      const rendered = render(template, props, options);      
+      const expected = "<div>\n    Hello   \n   Nino    </div>";
+      expect(rendered).toEqual(expected);      
+   });
+});

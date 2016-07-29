@@ -39,6 +39,8 @@ by `react`).
 character. Default is `{ }`. When launching from prompt, you might need to enclose delimiters in quotes,
 e.g. `rioct --brackets "{{ }}"`.
 
+- `--normalize-html-whitespace` removes repeating whitespace from HTML text (enabled on by default).
+
 ## Using the compiled template
 
 Compiled files contains a `function()` that is called by `react` to render the component.

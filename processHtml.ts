@@ -66,7 +66,7 @@ function processHtml(html: string, context: Context): processResult {
    */   
    
    // use "react-templates" as external engine         
-   jsCode = rtExtractor(rtHtml, context.options.trace, result.tagName, context.options.typescript);       
+   jsCode = rtExtractor(rtHtml, context.options.trace, result.tagName, context.options.typescript, context.options.normalizeHtmlWhitespace);       
 
    jsCode = wrapImports(jsCode, context);   
 

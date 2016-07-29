@@ -14,7 +14,7 @@ import _eval = require("eval");
 
 export function compileTemplate(template: string, options?: CommandLineOptions)
 {
-   options = options || defaultOptions();
+   options = options || defaultOptions();  
    const jsCode = webpack(template, options);  
    return _eval(jsCode, "eval", {}, true);
 }
