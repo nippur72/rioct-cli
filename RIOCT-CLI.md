@@ -41,6 +41,8 @@ e.g. `rioct --brackets "{{ }}"`.
 
 - `--normalize-html-whitespace` removes repeating whitespace from HTML text (enabled on by default).
 
+- `--check-undefined` reports an error if an expression is `undefined`.
+
 ## Using the compiled template
 
 Compiled files contains a `function()` that is called by `react` to render the component.

@@ -22,6 +22,7 @@ var optsConfig =
       { option: 'typescript', type: 'Boolean', default: 'false', required: false, description: '(experimental) Output typescript files.'},
       { option: 'use-rioct-runtime', type: 'Boolean', default: 'false', required: false, description: 'uses "rioct" runtime for extra features'},
       { option: 'brackets', type: 'String', default: '{ }', required: false, description: 'Character used to delimit template expressions (separated by a space).'},
+      { option: 'check-undefined', type: 'Boolean', default: 'false', required: false, description: "Report an error if an expression is 'undefined'."},      
       { option: 'normalize-html-whitespace', type: 'Boolean', default: 'true', required: false, description: 'Remove repeating whitespace from HTML text.'}
    ]
 };
@@ -36,6 +37,7 @@ interface CommandLineOptions {
    brackets: string; 
    useRioctRuntime: boolean;
    normalizeHtmlWhitespace: boolean;  
+   checkUndefined: boolean;
 }
 
 function defaultOptions(): CommandLineOptions
@@ -46,7 +48,8 @@ function defaultOptions(): CommandLineOptions
       typescript: false,
       brackets: "{ }", 
       useRioctRuntime: false,
-      normalizeHtmlWhitespace: true
+      normalizeHtmlWhitespace: true,
+      checkUndefined: false
    };
 }
 
