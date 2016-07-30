@@ -43,6 +43,8 @@
     <TypeScriptCompile Include="spec\parseBracketCliOptionSpec.ts" />
     <TypeScriptCompile Include="spec\cleanBracketsSpec.ts" />
     <TypeScriptCompile Include="spec\componentSpec.ts" />
+    <TypeScriptCompile Include="parseScope.ts" />
+    <TypeScriptCompile Include="spec\parseScopeSpec.ts" />
     <TypeScriptCompile Include="spec\replaceBracketsSpec.ts" />
     <TypeScriptCompile Include="webpack.ts" />
     <TypeScriptCompile Include="processHtml.ts" />

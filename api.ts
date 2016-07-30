@@ -10,6 +10,7 @@ import { getLine } from "./location";
 import pascalcase = require("pascalcase");
 
 import { replaceAll } from "./replaceAll";
+import { parseScope } from "./parseScope";
 
 import _ = require("lodash");
 
@@ -257,6 +258,17 @@ function processAttrib(tag: CheerioElement, attrib: string, value: string, conte
 
    // process scope
    if(attrib==="rt-scope") {
+      const scopes = tag.attribs["rt-scope"];
+
+      const parsed = parseScope(scopes);
+
+      if(parsed.length === 0) {
+         throw new CompileError("syntax error in scope", context.file, getLine(context.html, tag), scopes);                     
+      }
+
+      const newScopes = parsed.map(item => `${item.expression} as ${item.identifier}`);
+
+      /*
       let scopes = (tag.attribs["rt-scope"] as string).split(';');
       let newScopes: string[] = [];
       scopes.forEach(scope => {
@@ -278,6 +290,7 @@ function processAttrib(tag: CheerioElement, attrib: string, value: string, conte
             newScopes.push(newScope);
          }
       });
+      */
 
       tag.attribs["rt-scope"] = newScopes.join(";");           
    }

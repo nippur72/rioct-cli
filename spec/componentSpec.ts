@@ -53,3 +53,13 @@ describe("CLI option --normalize-html-whitespace", ()=> {
       expect(rendered).toEqual(expected);      
    });
 });
+
+describe("scope attribute", ()=> {
+   it("works correctly", ()=>{          
+      const template = '<test stateless><virtual scope="props.name as name">Hello {name}</virtual></test>';
+      const props = {name: "Nino"};
+      const rendered = render(template, props);      
+      const expected = "<div>Hello Nino</div>";
+      expect(rendered).toEqual(expected);      
+   });
+});
