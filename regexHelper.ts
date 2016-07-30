@@ -2,6 +2,10 @@
    return "("+s+")";
 }
 
+export function nonCapture(s: string) {
+   return "(?:"+s+")";
+}
+
 export function zeroOrOne(s: string) {
    return "(?:"+s+")?";
 }
@@ -20,6 +24,10 @@ export function startOfLine() {
 
 export function endOfLine() {
    return "$";
+}
+
+export function or(op1: string, op2: string) {
+   return `${op1}|${op2}`;
 }
 
 export function text(s: string) {
