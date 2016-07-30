@@ -46,7 +46,10 @@ function wrapGenericExpression(jsCode: string, context: Context)
                }
             }`;
 
-   return wrapAndApply(fn).split("\n").join("\n");  // newlines are necessary: code can't use ";" because of "scope" syntax
+   // newlines are necessary: code can't use ";" because of "scope" syntax,
+   // that can be changed once https://github.com/wix/react-templates/pull/176 is merged
+
+   return wrapAndApply(fn).split("\n").join("\n");  
 }
 
 /**

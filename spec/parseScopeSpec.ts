@@ -6,10 +6,12 @@ describe("parseScope()", ()=> {
       expect(r).toEqual(expected);
    }
 
-   function noway(scope: string) {
-      test(scope, []);
+   function noway(scope: string, error?: string) {
+      const r = () => parseScope(scope);
+      if(error) expect(r).toThrow(error);
+      else      expect(r).toThrow();
    }
-
+   
    it("parses simple scope not ending in semicolon", ()=> {
       test("a as b", [{ expression: "a", identifier: "b"}]);
    });
@@ -50,6 +52,7 @@ describe("parseScope()", ()=> {
       test("'as fast as possible' as message", [{ expression: "'as fast as possible'", identifier: "message"}]);
       test("';' as semicolon", [{ expression: "';'", identifier: "semicolon"}]);
       test(" as as as1 ", [{ expression: "as", identifier: "as1"}]);
+      test("'as' as as", [{ expression: "'as'", identifier: "as"}]);
    });
 
    it("parses trailing spaces", ()=> {
@@ -67,10 +70,18 @@ describe("parseScope()", ()=> {
    });
 
    it("doesn't parse malformed expressions", ()=> {
-      noway("a as");
+      noway("a as" );
       noway("a as;");
-      noway("as a");
+      noway("as a" );
       noway("as a;");
-   });
+   });       
+   
+   it("doesn't parse multiple malformed expressions", ()=> {      
+      noway("a;", "a;");      
+      noway("a as b;c", "c");      
+      noway("a as b;c as d; e as", "e as");      
+      noway("a as b;cas d; e as", "cas d; e as");      
+      noway("a as 12;", "a as 12;");      
+   });     
 });
 

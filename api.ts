@@ -260,10 +260,14 @@ function processAttrib(tag: CheerioElement, attrib: string, value: string, conte
    if(attrib==="rt-scope") {
       const scopes = tag.attribs["rt-scope"];
 
-      const parsed = parseScope(scopes);
-
-      if(parsed.length === 0) {
-         throw new CompileError("syntax error in scope", context.file, getLine(context.html, tag), scopes);                     
+      let parsed;
+      try 
+      {
+         parsed = parseScope(scopes);
+      }
+      catch(scopePart) 
+      {
+         throw new CompileError(`syntax error in scope while parsing "${scopePart}"`, context.file, getLine(context.html, tag), scopes);                     
       }
 
       const newScopes = parsed.map(item => `${item.expression} as ${item.identifier}`);

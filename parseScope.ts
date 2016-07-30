@@ -26,20 +26,21 @@ export function parseScope(s: string): scopeItem[]
 
 function buildResult(regex: RegExp, text: string): scopeItem[]
 {
-   let res: scopeItem[] = [];
+   const res: scopeItem[] = [];
 
-   for (;;) {
-        var match = regex.exec(text);
-        if (match === null) {
-            break;
-        }
-        if (match.index === regex.lastIndex) {
-            regex.lastIndex++;
-        }
-                                
-        res.push({ expression: match[1].trim(), identifier: match[2] });
-    }
+   do {       
+      const idx = regex.lastIndex;  
+      const match = regex.exec(text);      
+      if(regex.lastIndex===idx || match === null) {
+         // did not match at the index, report as error
+         throw text.substr(idx);
+      }            
+      if(match.index === regex.lastIndex) {
+         regex.lastIndex++;
+      }                                
+      res.push({expression: match[1].trim(), identifier: match[2]});
+   } while(regex.lastIndex < text.length)
 
-    return res;
+   return res;
 }
 

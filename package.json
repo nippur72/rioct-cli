@@ -1,6 +1,6 @@
 {
   "name": "rioct-cli",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Converts HTML templates to React",
   "main": "rioct-cli.js",
   "author": "Antonino Porcino",
@@ -29,7 +29,7 @@
     "lodash": "^4.13.1",
     "optionator": "^0.8.1",
     "pascalcase": "^0.1.1",
-    "react-templates": "git+https://github.com/nippur72/react-templates.git#native-cli"
+    "react-templates": "git+https://github.com/nippur72/react-templates.git#scope-syntax-parser"
   },
   "devDependencies": {
     "@types/react": "^0.14.27",
