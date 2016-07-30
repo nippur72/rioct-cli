@@ -20,7 +20,7 @@ export function wrapImports(code: string, context: Context) {
 }
 
 function wrapSingleImport(line: string, context: Context): string {
-   const Id = "[$_a-z]+[$_a-z0-9]*";
+   const Id = "[$_a-zA-Z]+[$_a-zA-Z0-9]*";
    const quoted_string = "'.*'";
 
    // must match one of these:
