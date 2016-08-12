@@ -48,9 +48,16 @@ describe("parseScope()", ()=> {
       test("a as A", [{ expression: "a", identifier: "A"}]);
    });
 
+   it("parses quoted strings", ()=> {
+      test(`"a as id;" as id;`, [{ expression: `"a as id;"`, identifier: "id"}]);
+      test(`'a as id;' as id;`, [{ expression: `'a as id;'`, identifier: "id"}]);
+      test(`"\\"a as id;" as id;`, [{ expression: `"\\"a as id;"`, identifier: "id"}]);
+      test(`'\\'a as id;' as id;`, [{ expression: `'\\'a as id;'`, identifier: "id"}]);
+   });
+
    it("parses previously critical expressions", ()=> {
       test("'as fast as possible' as message", [{ expression: "'as fast as possible'", identifier: "message"}]);
-      test("';' as semicolon", [{ expression: "';'", identifier: "semicolon"}]);
+      test("';' as semicolon",  [{ expression: "';'", identifier: "semicolon"}]);
       test(" as as as1 ", [{ expression: "as", identifier: "as1"}]);
       test("'as' as as", [{ expression: "'as'", identifier: "as"}]);
    });
@@ -75,13 +82,19 @@ describe("parseScope()", ()=> {
       noway("as a" );
       noway("as a;");
    });       
-   
+                                          
    it("doesn't parse multiple malformed expressions", ()=> {      
+      noway("", "");      
+      noway("a as id;;", ";");      
+      noway("as id;", "as id;");      
       noway("a;", "a;");      
       noway("a as b;c", "c");      
       noway("a as b;c as d; e as", "e as");      
       noway("a as b;cas d; e as", "cas d; e as");      
       noway("a as 12;", "a as 12;");      
+      noway("x'a as v", "x'a as v");      
+      noway("a as id;x'a as v", "x'a as v");      
+      noway('x"a as v', 'x"a as v');      
+      noway('a as id;x"a as v', 'x"a as v');      
    });     
 });
-

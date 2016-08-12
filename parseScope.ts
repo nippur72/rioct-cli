@@ -8,14 +8,17 @@ export interface scopeItem
 
 export function parseScope(s: string): scopeItem[]
 {
+   const double_quoted_string = `"[^"\\\\]*(?:\\\\.[^"\\\\]*)*"`; 
+   const single_quoted_string = `'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'`; 
+   const text_out_of_quotes = `[^"']*?`;
+   const expr_parts = rh.or(double_quoted_string, single_quoted_string, text_out_of_quotes);
+   const expression = rh.zeroOrMore(rh.nonCapture(expr_parts))+"?";
    const id = "[$_a-zA-Z]+[$_a-zA-Z0-9]*";   
-   const expr = "[\\s\\S]*?";
-   const as = rh.OneOrMore(" ") + rh.text("as") + rh.OneOrMore(" ");
-   const spaces = rh.zeroOrMore(" ");
-
+   const as = rh.text(" as") + rh.OneOrMore(" ");
+   const optional_spaces = rh.zeroOrMore(" ");
    const semicolon = rh.nonCapture(rh.or(rh.text(";"), rh.endOfLine()));    
 
-   const regex = rh.capture(expr) + as + rh.capture(id) + spaces + semicolon + spaces;
+   const regex = rh.capture(expression) + as + rh.capture(id) + optional_spaces + semicolon + optional_spaces;
 
    const R = new RegExp(regex, "g");
 
@@ -24,14 +27,16 @@ export function parseScope(s: string): scopeItem[]
    return result;
 }
 
+
 function buildResult(regex: RegExp, text: string): scopeItem[]
 {
    const res: scopeItem[] = [];
 
    do {       
       const idx = regex.lastIndex;  
-      const match = regex.exec(text);      
-      if(regex.lastIndex===idx || match === null) {
+      const match = regex.exec(text);  
+      //console.log(`text=${text} idx=${idx} regex.lastIndex=${regex.lastIndex} match.index=${match?match.index:''} match=${match}`);    
+      if(regex.lastIndex===idx || match === null || match.index !== idx) {
          // did not match at the index, report as error
          throw text.substr(idx);
       }            

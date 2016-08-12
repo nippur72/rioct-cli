@@ -26,8 +26,8 @@ export function endOfLine() {
    return "$";
 }
 
-export function or(op1: string, op2: string) {
-   return `${op1}|${op2}`;
+export function or(...ops: string[]) {
+   return ops.join("|");
 }
 
 export function text(s: string) {
