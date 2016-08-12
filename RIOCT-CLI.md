@@ -43,6 +43,20 @@ e.g. `rioct --brackets "{{ }}"`.
 
 - `--check-undefined` reports an error if an expression is `undefined`.
 
+- `--create-element-alias` use an alias name for "React.createElement()", allowing shorter function calls in the generated JavaScript code.
+
+Example:
+```
+rt foo.rt --create-element-alias h
+```
+will generate:
+```js
+var h = require('react').createElement;
+module.exports = function () {
+    return h('div', {}, h('span', {}, 'Hello'));
+};
+```
+
 ## Using the compiled template
 
 Compiled files contains a `function()` that is called by `react` to render the component.

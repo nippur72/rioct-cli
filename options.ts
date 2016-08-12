@@ -23,7 +23,8 @@ var optsConfig =
       { option: 'use-rioct-runtime', type: 'Boolean', default: 'false', required: false, description: 'uses "rioct" runtime for extra features'},
       { option: 'brackets', type: 'String', default: '{ }', required: false, description: 'Character used to delimit template expressions (separated by a space).'},
       { option: 'check-undefined', type: 'Boolean', default: 'false', required: false, description: "Report an error if an expression is 'undefined'."},      
-      { option: 'normalize-html-whitespace', type: 'Boolean', default: 'true', required: false, description: 'Remove repeating whitespace from HTML text.'}
+      { option: 'normalize-html-whitespace', type: 'Boolean', default: 'true', required: false, description: 'Remove repeating whitespace from HTML text.'},
+      { option: 'create-element-alias', type: 'String', required: false, description: 'Use an alias for "React.createElement()".'}
    ]
 };
 
@@ -38,6 +39,7 @@ interface CommandLineOptions {
    useRioctRuntime: boolean;
    normalizeHtmlWhitespace: boolean;  
    checkUndefined: boolean;
+   createElementAlias: string
 }
 
 function defaultOptions(): CommandLineOptions
@@ -49,7 +51,8 @@ function defaultOptions(): CommandLineOptions
       brackets: "{ }", 
       useRioctRuntime: false,
       normalizeHtmlWhitespace: true,
-      checkUndefined: false
+      checkUndefined: false,
+      createElementAlias: ''
    };
 }
 

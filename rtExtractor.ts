@@ -95,7 +95,7 @@ export = render;`;
 }
 
 
-export function extract(rtHtml: string, trace: boolean, tagName: string, typeScriptOutput: boolean, normalizeHtmlWhitespace: boolean): string
+export function extract(rtHtml: string, trace: boolean, tagName: string, typeScriptOutput: boolean, normalizeHtmlWhitespace: boolean, createElementAlias: string): string
 {
    var rtOptions = {
          modules: typeScriptOutput ? 'typescript' : 'commonjs',
@@ -104,7 +104,8 @@ export function extract(rtHtml: string, trace: boolean, tagName: string, typeScr
          native: false,
          target: "0.14.0",
          reactImportPath: "react",
-         normalizeHtmlWhitespace: normalizeHtmlWhitespace
+         normalizeHtmlWhitespace: normalizeHtmlWhitespace,
+         createElementAlias: createElementAlias
    };
    
    var jsCode;
