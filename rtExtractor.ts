@@ -4,6 +4,7 @@
 
 import rt = require("react-templates/src/reactTemplates");
 import { Context } from "./context";
+import { CommandLineOptions } from "./options";
 
 function wrapCodeCommonJs(js: string, trace: boolean, tagName: string) 
 {      
@@ -95,17 +96,18 @@ export = render;`;
 }
 
 
-export function extract(rtHtml: string, trace: boolean, tagName: string, typeScriptOutput: boolean, normalizeHtmlWhitespace: boolean, createElementAlias: string): string
+export function extract(rtHtml: string, tagName: string, options: CommandLineOptions): string
 {
    var rtOptions = {
-         modules: typeScriptOutput ? 'typescript' : 'commonjs',
+         modules: options.typescript ? 'typescript' : 'commonjs',
          version: false,
          format: 'stylish',
          native: false,
-         target: "0.14.0",
-         reactImportPath: "react",
-         normalizeHtmlWhitespace: normalizeHtmlWhitespace,
-         createElementAlias: createElementAlias
+         targetVersion: options.targetVersion,
+         reactImportPath: options.reactImportPath,
+         lodashImportPath: options.lodashImportPath,
+         normalizeHtmlWhitespace: options.normalizeHtmlWhitespace,
+         createElementAlias: options.createElementAlias
    };
    
    var jsCode;
@@ -122,7 +124,7 @@ export function extract(rtHtml: string, trace: boolean, tagName: string, typeScr
       return "";
    }
 
-   return typeScriptOutput ? wrapCodeTypeScript(jsCode, trace, tagName) : wrapCodeCommonJs(jsCode, trace, tagName);
+   return options.typescript ? wrapCodeTypeScript(jsCode, options.trace, tagName) : wrapCodeCommonJs(jsCode, options.trace, tagName);
 }     
 
 

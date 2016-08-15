@@ -43,6 +43,10 @@ e.g. `rioct --brackets "{{ }}"`.
 
 - `--check-undefined` reports an error if an expression is `undefined`.
 
+- `--react-import-path` Dependency path for importing React.
+
+- `--lodash-import-path` Dependency path for importing lodash.
+
 - `--create-element-alias` use an alias name for "React.createElement()", allowing shorter function calls in the generated JavaScript code.
 
 Example:

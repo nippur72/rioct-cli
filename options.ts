@@ -24,7 +24,10 @@ var optsConfig =
       { option: 'brackets', type: 'String', default: '{ }', required: false, description: 'Character used to delimit template expressions (separated by a space).'},
       { option: 'check-undefined', type: 'Boolean', default: 'false', required: false, description: "Report an error if an expression is 'undefined'."},      
       { option: 'normalize-html-whitespace', type: 'Boolean', default: 'true', required: false, description: 'Remove repeating whitespace from HTML text.'},
-      { option: 'create-element-alias', type: 'String', required: false, description: 'Use an alias for "React.createElement()".'}
+      { option: 'create-element-alias', type: 'String', required: false, description: 'Use an alias for "React.createElement()".'},
+      { option: 'target-version', type: 'String', default: '15.0.0', description: 'React version to generate code for.' },
+      { option: 'react-import-path', type: 'String', default: 'react', description: 'Dependency path for importing React.' },
+      { option: 'lodash-import-path', type: 'String', default: 'lodash', description: 'Dependency path for importing lodash.' }
    ]
 };
 
@@ -39,7 +42,10 @@ interface CommandLineOptions {
    useRioctRuntime: boolean;
    normalizeHtmlWhitespace: boolean;  
    checkUndefined: boolean;
-   createElementAlias: string
+   createElementAlias: string,
+   targetVersion: string,
+   reactImportPath: string,
+   lodashImportPath: string
 }
 
 function defaultOptions(): CommandLineOptions
@@ -52,7 +58,10 @@ function defaultOptions(): CommandLineOptions
       useRioctRuntime: false,
       normalizeHtmlWhitespace: true,
       checkUndefined: false,
-      createElementAlias: ''
+      createElementAlias: '',
+      targetVersion: '15.0.0',
+      reactImportPath: 'react',
+      lodashImportPath: 'lodash'
    };
 }
 
