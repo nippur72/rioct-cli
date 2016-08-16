@@ -7,5 +7,6 @@ typings/
 *.tag.js
 *.js
 example-tag.rt
-
 .ntvs_analysis.dat
+!bin.js
+

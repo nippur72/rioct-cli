@@ -74,6 +74,7 @@
     <Folder Include="spec\support\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bin.js" />
     <Compile Include="spec\rioct-cli.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
