@@ -1,6 +1,6 @@
 {
   "name": "rioct-cli",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Converts HTML templates to React",
   "main": "rioct-cli.js",
   "author": "Antonino Porcino",
@@ -8,7 +8,7 @@
     "test": "jasmine"
   },
   "bin": {
-     "rioct": "rioct-cli.js"
+     "rioct": "./rioct-cli"
   },
   "repository": {
     "type": "git",
