@@ -13,7 +13,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>692ad08e-cc49-4638-a858-6a77780fca0d</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>rioct-cli.ts</StartupFile>
+    <StartupFile>cli.ts</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -54,7 +54,7 @@
     <TypeScriptCompile Include="replace-extension.ts" />
     <TypeScriptCompile Include="replaceAll.ts" />
     <TypeScriptCompile Include="entryPoint.ts" />
-    <TypeScriptCompile Include="rioct-cli.ts" />
+    <TypeScriptCompile Include="cli.ts" />
     <TypeScriptCompile Include="missing-defs.ts" />
     <TypeScriptCompile Include="options.ts" />
     <TypeScriptCompile Include="react-events.ts" />
@@ -72,6 +72,9 @@
   <ItemGroup>
     <Folder Include="spec\" />
     <Folder Include="spec\support\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="spec\rioct-cli.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">

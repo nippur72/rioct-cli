@@ -28,6 +28,4 @@ function main(argv) {
    entryPoint(options);
 }
 
-// entry point
-main(process.argv);
 

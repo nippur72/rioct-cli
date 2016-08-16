@@ -13,7 +13,7 @@ npm install -g rioct-cli
 ## Usage
 
 ```
-rioct-cli filename.html [options]
+rioct filename.html [options]
 ```
 
 if compiled successfully, it will produce the following files:
@@ -51,7 +51,7 @@ e.g. `rioct --brackets "{{ }}"`.
 
 Example:
 ```
-rt foo.rt --create-element-alias h
+rioct foo.rt --create-element-alias h
 ```
 will generate:
 ```js
