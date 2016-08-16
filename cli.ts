@@ -13,7 +13,7 @@ import _ = require("lodash");
 import md5 = require("blueimp-md5");
 import { entryPoint } from "./entryPoint";
 
-function main(argv) {
+export function main(argv) {
    var options;
 
    // process command line options
@@ -24,7 +24,6 @@ function main(argv) {
       console.log(ex.message);
       process.exit(-1);
    }
-
    entryPoint(options);
 }
 
