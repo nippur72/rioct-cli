@@ -19,9 +19,12 @@ export function entryPoint(options: CommandLineOptions) {
 
    var allOk = true;
 
+   let atLeastOne = false;
+
    _.each(options._, fileName => {
       var filesExpanded = glob.sync(fileName);
       _.each(filesExpanded, fileName => {
+         atLeastOne = true;
          try
          {
             results.push(processHtmlFile(fileName, options)) 
@@ -41,6 +44,10 @@ export function entryPoint(options: CommandLineOptions) {
          }  
       });
    });
+
+   if(!atLeastOne) {
+      console.log("no input file(s) to process");
+   }
 
    /*
    if(!allOk) {
