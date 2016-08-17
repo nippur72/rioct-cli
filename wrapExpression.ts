@@ -16,25 +16,6 @@ function wrapTextExpression(jsCode: string, context: Context)
       
    var fn =`function() { 
                try {
-                  var $expr = (${jsCode});
-                  if(${wrongType}) {
-                     console.error("runtime error when evaluating: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\nexpression must be of type 'string' or 'number', instead is '"+(typeof $expr)+"'");
-                  }
-                  return $expr;
-               }
-               catch(ex) {                     
-                  console.error("runtime error when evaluating: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\n" + ex.message)
-               }
-            }`;
-   return wrapAndApply(fn);
-}
-
-function wrapGenericExpression(jsCode: string, context: Context) 
-{   
-   const wrongType = context.options.checkUndefined ? "typeof $expr === 'undefined'" : "false";
-
-   let fn =`function() { 
-               try {
                   var $expr = (${jsCode})
                   if(${wrongType}) {
                      console.error("runtime error when evaluating: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\nexpression must be of type 'string' or 'number', instead is '"+(typeof $expr)+"'")
@@ -42,7 +23,31 @@ function wrapGenericExpression(jsCode: string, context: Context)
                   return $expr
                }
                catch(ex) {                     
+                  console.error("runtime error when evaluating: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\n" + ex.message)
+                  return '???'
+               }
+            }`;
+   return wrapAndApply(fn);
+}
+
+function wrapGenericExpression(jsCode: string, context: Context) 
+{   
+   const wrongCheck = context.options.checkUndefined ? 
+`
+                  if(typeof $expr === 'undefined') {
+                     console.error("runtime error when evaluating: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\nexpression must be of type 'string' or 'number', instead is '"+(typeof $expr)+"'")
+                  }
+` : '';
+
+   let fn =`function() { 
+               try {
+                  var $expr = (${jsCode})
+                  ${wrongCheck}
+                  return $expr
+               }
+               catch(ex) {                     
                   console.error("runtime expression error when evaluating: ${printableString(jsCode)}\\nin file: '${file(context.file)}', line ${context.line}, col ${context.column}\\nerror: " + ex.message)
+                  return undefined
                }
             }`;
 
@@ -63,7 +68,7 @@ function wrapGenericExpression(jsCode: string, context: Context)
  */
 
 export function wrapExpression(jsCode: string, context: Context, isTextExpression?: boolean): string {
-   var expr = jsCode;   
+   var expr = jsCode;  
    
    if(context.options.trace) {
       // special case of <yield> tag
@@ -86,6 +91,3 @@ export function wrapExpression(jsCode: string, context: Context, isTextExpressio
 
    return expr;
 }
-
-
-

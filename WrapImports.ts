@@ -9,7 +9,7 @@ export function wrapImports(code: string, context: Context) {
    {
       let l = lines[t];
       if(l.match(/require\(/)) {
-         lines[t] = wrapSingleImport(l, context);
+         lines[t] = wrapSingleImportCommonJs(l, context);
       }
       if(l.match(/= function \(/)) {
          break;
@@ -19,7 +19,7 @@ export function wrapImports(code: string, context: Context) {
    return lines.join('\n');
 }
 
-function wrapSingleImport(line: string, context: Context): string {
+function wrapSingleImportCommonJs(line: string, context: Context): string {
    const Id = "[$_a-zA-Z]+[$_a-zA-Z0-9]*";
    const quoted_string = "'.*'";
 
@@ -45,11 +45,11 @@ function wrapSingleImport(line: string, context: Context): string {
    }
    else
    {
-      return createTraceCode(aliasName, fileName, memberName, context);
+      return createTraceCodeCommonJs(aliasName, fileName, memberName, context);
    }   
 }
 
-function createTraceCode(aliasName: string, fileName: string, memberName: string, context: Context) {
+function createTraceCodeCommonJs(aliasName: string, fileName: string, memberName: string, context: Context) {
       let code = `var ${aliasName};`;
       code = code + `
 try 

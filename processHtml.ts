@@ -6,6 +6,7 @@ import { getLine } from "./location";
 import { processNode }from "./api";
 import { wrapImports } from "./wrapImports";
 import { parseBracketCliOption } from "./brackets";
+import { replaceAll } from "./replaceAll";
 
 import decamelize = require("decamelize");
 import cheerio = require("cheerio");
@@ -66,9 +67,17 @@ function processHtml(html: string, context: Context): processResult {
    */   
    
    // use "react-templates" as external engine         
-   jsCode = rtExtractor(rtHtml, result.tagName, context.options);       
+   jsCode = rtExtractor(rtHtml, result.tagName, context);       
 
    jsCode = wrapImports(jsCode, context);   
+
+   // patch to fix createElement typing hell
+   if(context.options.typescript) {
+      jsCode = replaceAll(jsCode, "import { createElement as h } from 'react';", "declare function h(...a:any[]);");             
+      
+      const r3 = /import ([$_a-zA-Z]+[$_a-zA-Z0-9]*) = require\(('.*\.html')\);/g;
+      jsCode = jsCode.replace(r3, "declare function $1(...a:any[]); // import $1 = require($2);");  
+   }
 
    result.outName = context.outName;
 

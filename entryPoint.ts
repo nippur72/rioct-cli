@@ -56,9 +56,9 @@ export function entryPoint(options: CommandLineOptions) {
    }
 
    outputFile(results, options);
+   */
 
    console.log("done");
-   */
 }
 
 /*
@@ -95,7 +95,7 @@ function processHtmlFile(fileName: string, options: CommandLineOptions): process
    context.options = options;
    context.hash = md5(fileName,"rioct");
 
-   var outName = replaceExt(fileName, ".tag.js");
+   var outName = replaceExt(fileName, options.typescript ? ".tag.ts" : ".tag.js");
 
    context.outName = outName;
 
