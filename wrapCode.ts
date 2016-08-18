@@ -63,7 +63,8 @@ export function wrapCodeTypeScript(js: string, trace: boolean, tagName: string)
    }
 
    if(isStateless) {
-      args.push("props", "context");
+      func = replaceAll(func, "function(props, context)", "function(props: component, context)");
+      args.push("props: component", "context");
    }
 
    if(!isStateless) {
@@ -75,14 +76,12 @@ export function wrapCodeTypeScript(js: string, trace: boolean, tagName: string)
 
       const r1 = /(function [$_a-zA-Z]+[$_a-zA-Z0-9]*)\(()\)/g;
       func = func.replace(r1, "$1(this: component)");
+   }   
 
-      const r2 = /(_\.transform\()/g;
-      func = func.replace(r2, "_.transform<{},string|undefined>(");
+   const r2 = /(_\.transform\()/g;
+   func = func.replace(r2, "_.transform<{},string|undefined>(");
 
-      //console.log(func);    
-      
-      before = before + `\nimport component from './${tagName}';\n`;
-   }
+   before = before + `\nimport component from './${tagName}';\n`;   
 
    if(trace) {   
       return before +
