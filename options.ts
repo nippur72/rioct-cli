@@ -27,7 +27,8 @@ var optsConfig =
       { option: 'create-element-alias', type: 'String', required: false, description: 'Use an alias for "React.createElement()".'},
       { option: 'target-version', type: 'String', default: '15.0.0', description: 'React version to generate code for.' },
       { option: 'react-import-path', type: 'String', default: 'react', description: 'Dependency path for importing React.' },
-      { option: 'lodash-import-path', type: 'String', default: 'lodash', description: 'Dependency path for importing lodash.' }
+      { option: 'lodash-import-path', type: 'String', default: 'lodash', description: 'Dependency path for importing lodash.' },
+      { option: 'external-helpers', default: '', type: 'String', description: "Emit helper functions as external dependency (and do not rely on 'lodash')" }            
    ]
 };
 
@@ -45,7 +46,8 @@ interface CommandLineOptions {
    createElementAlias: string,
    targetVersion: string,
    reactImportPath: string,
-   lodashImportPath: string
+   lodashImportPath: string,
+   externalHelpers: string
 }
 
 function defaultOptions(): CommandLineOptions
@@ -61,7 +63,8 @@ function defaultOptions(): CommandLineOptions
       createElementAlias: '',
       targetVersion: '15.0.0',
       reactImportPath: 'react',
-      lodashImportPath: 'lodash'
+      lodashImportPath: 'lodash',
+      externalHelpers: ''
    };
 }
 

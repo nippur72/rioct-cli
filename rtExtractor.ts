@@ -18,7 +18,8 @@ export function extract(rtHtml: string, tagName: string, context: Context): stri
       reactImportPath: context.options.reactImportPath,
       lodashImportPath: context.options.lodashImportPath,
       normalizeHtmlWhitespace: context.options.normalizeHtmlWhitespace,
-      createElementAlias: context.options.createElementAlias
+      createElementAlias: context.options.createElementAlias,
+      externalHelpers: context.options.externalHelpers,
    };
    
    var jsCode;
