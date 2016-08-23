@@ -218,6 +218,8 @@ function processAttrib(tag: CheerioElement, attrib: string, value: string, conte
       return;      
    }    
 
+   /*
+   // ref string attribute was not deprecated but considered "legacy"   
    // restore back old React's string refs 
    if(attrib === "ref") {            
       // only if it's a string constant (does not contains parens)
@@ -227,6 +229,7 @@ function processAttrib(tag: CheerioElement, attrib: string, value: string, conte
          return;
       }
    }      
+   */
 
    // process if
    if(attrib==="rt-if") {

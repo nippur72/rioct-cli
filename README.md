@@ -18,7 +18,6 @@ extends the syntax and adds new features.
 - content yielding with `<yield />`, `<yield from=""/>` and `<yield to=""/>`
 - `show` and `hide` attributes
 - unified `class` attributes
-- easy elements reference with `ref=` (dropped in latest React)
 - supports custom brackets like `{{ }}` or `{% %}`.
 
 ## Compared to [Riot](http://riotjs.com/)
