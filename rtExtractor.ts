@@ -31,7 +31,7 @@ export function extract(rtHtml: string, tagName: string, context: Context): stri
    catch(ex) 
    {
       console.log(ex);
-      console.log(rtHtml);
+      //console.log(rtHtml);
       return "";
    }
 
