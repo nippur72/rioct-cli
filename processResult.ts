@@ -1,5 +1,7 @@
 ﻿export const LibName = "Rioct";
 
+import { minify, prefixCss } from "react-style-tag/lib/transform";
+
 export class processResult {
    tagName: string;
    functionName: string;
@@ -25,12 +27,15 @@ export class processResult {
 
    sanitizeStyle(style: string, trace: boolean): string {
       let compactStyle: string;
+
+      const prefixed = prefixCss(style);
       
       if(trace) {
-         compactStyle = `/*** styles local to tag <${this.tagName}> ***/\r\n\r\n` + style;
+         compactStyle = `/*** styles local to tag <${this.tagName}> ***/\r\n\r\n` + prefixed;
       }
       else {
-         compactStyle = style.split('\n').map(item=>item.trim()).join(' ').split('\r').map(item=>item.trim()).join(' ');      
+         //compactStyle = prefixed.split('\n').map(item=>item.trim()).join(' ').split('\r').map(item=>item.trim()).join(' ');      
+         compactStyle = minify(prefixed);
       }
       return JSON.stringify(compactStyle);
    }

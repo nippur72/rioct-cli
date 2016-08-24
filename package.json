@@ -8,7 +8,7 @@
     "test": "jasmine"
   },
   "bin": {
-     "rioct": "./exec"
+    "rioct": "./exec"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "lodash": "^4.13.1",
     "optionator": "^0.8.1",
     "pascalcase": "^0.1.1",
+    "react-style-tag": "^1.1.0",
     "react-templates": "git+https://github.com/nippur72/react-templates.git#scope-syntax-parser"
   },
   "devDependencies": {

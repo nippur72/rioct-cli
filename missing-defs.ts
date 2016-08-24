@@ -61,3 +61,8 @@ declare module "eval" {
    function eval(s: string, fileName?:string, scope?: any, includeGlobals?: boolean): any;
    export = eval;
 }
+
+declare module "react-style-tag/lib/transform" {
+   export function minify(css: string): string;
+   export function prefixCss(css: string): string;
+}
