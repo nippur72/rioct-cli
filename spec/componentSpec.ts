@@ -63,3 +63,17 @@ describe("scope attribute", ()=> {
       expect(rendered).toEqual(expected);      
    });
 });
+
+describe("naming convention", ()=> {
+   it("names kebab-case components", ()=>{          
+      const template = `
+<example-tag is="ex-tag">
+   <div>this is div</div>   
+   <my-div>this is my-div</my-div>   
+</example-tag>`;
+      const props = {name: "Nino"};
+      const rendered = render(template, props);      
+      const expected = `<ex-tag><div>this is div</div><my-div>this is my-div</my-div></ex-tag>`;
+      expect(rendered).toEqual(expected);      
+   });
+});

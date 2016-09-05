@@ -58,9 +58,12 @@ function processTagNode(tag: CheerioElement, context: Context, r: processResult)
       tag.name = "rt-virtual";
    }
 
-   // turn hypenated names to camelcased, only if they are not "rt-"
+   // turn hypenated names to camelcased, only if they are not "rt-" and if not a known component
    if(tag.name.indexOf("-")!==-1 && tag.name.indexOf("rt-")===-1) {
-      tag.name = pascalcase(tag.name);
+      const pascalized = pascalcase(tag.name);
+      if(context.importNames.indexOf(pascalized) !== -1) {
+         tag.name = pascalized;
+      }
    }
 
    /*
@@ -126,16 +129,23 @@ function processTagNode(tag: CheerioElement, context: Context, r: processResult)
 
       // remove from tree (ugly hack)
       tag.parentNode.children = tag.parentNode.children.filter( child => child.name!=="rt-require" );
+
+      // add to known imports
+      context.importNames.push(tag.attribs["as"]);
       return;
    }
 
    // rt-import are moved to header and deleted from the tree
    if(tag.name === "rt-import") {
+      // add to known imports
+      context.importNames.push(tag.attribs["as"]||tag.attribs["name"]);
+
       // insert into header nodes
       context.headerNodes.childNodes.push(tag);      
 
       // remove from tree (ugly hack)
       tag.parentNode.children = tag.parentNode.children.filter( child => child.name!=="rt-import" );
+
       return;
    }
 

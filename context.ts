@@ -15,6 +15,7 @@ export class Context {
    outName: string;
    tagName: string;
    brackets: Brackets;
+   importNames: string[] = [];
 
    moveTo(tag)
    {
