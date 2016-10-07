@@ -26,8 +26,18 @@ export function renderComponent(template: string, props?: any, options?: Command
    process.env.NODE_ENV = "production";
 
    const fn = compileTemplate(template, options);
-   const component = React.createElement(fn, props);      
-   const s = ReactDOMServer.renderToStaticMarkup(component);
+   const component = React.createElement(fn, props);
+   let s;
+
+   try
+   {      
+      s = ReactDOMServer.renderToStaticMarkup(component);
+   }
+   catch(err)
+   {
+      console.log(fn.toString());
+      throw new Error("failed to render component: " + err.message);
+   }
 
    // restore warnings
    process.env.NODE_ENV = oldNODE_ENV;

@@ -72,7 +72,7 @@ export function wrapExpression(jsCode: string, context: Context, isTextExpressio
    
    if(context.options.trace) {
       // special case of <yield> tag
-      if(jsCode==="this.props.children") isTextExpression = false;
+      if(jsCode==="this.props.children" || jsCode==="props.children") isTextExpression = false;
 
       expr = isTextExpression === true ? wrapTextExpression(jsCode, context) : wrapGenericExpression(jsCode, context);
    }

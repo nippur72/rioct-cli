@@ -1,6 +1,6 @@
 ﻿import { replaceAll } from "./replaceAll";
 
-export function wrapCodeCommonJs(js: string, trace: boolean, tagName: string) 
+export function wrapCodeCommonJs(js: string, trace: boolean, tagName: string, isStateless: boolean) 
 {      
    var p = "module.exports = ";
    var x = js.indexOf(p);
@@ -13,7 +13,7 @@ export function wrapCodeCommonJs(js: string, trace: boolean, tagName: string)
    var before = js.substring(0, x);
    var func   = js.substr(x+p.length);      
 
-   let stateless = func.indexOf("(props, context)")!==-1 ? "props, context" : "";
+   let stateless = isStateless ? "props, context" : "";
 
    if(trace) {   
       return before +
@@ -41,7 +41,7 @@ module.exports = render;`;
    }
 }
 
-export function wrapCodeTypeScript(js: string, trace: boolean, tagName: string) 
+export function wrapCodeTypeScript(js: string, trace: boolean, tagName: string, isStateless: boolean) 
 {      
    var p = "export = ";
    var x = js.indexOf(p);
@@ -52,9 +52,7 @@ export function wrapCodeTypeScript(js: string, trace: boolean, tagName: string)
    }
 
    var before = js.substring(0, x);
-   var func   = js.substr(x+p.length);           
-
-   const isStateless = func.indexOf("(props, context)") !== -1;
+   var func   = js.substr(x+p.length);              
 
    let args: string[] = [];
 

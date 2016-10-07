@@ -16,6 +16,7 @@ export class Context {
    tagName: string;
    brackets: Brackets;
    importNames: string[] = [];
+   isStateless: boolean = false;
 
    moveTo(tag)
    {

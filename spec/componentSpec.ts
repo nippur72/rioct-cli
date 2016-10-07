@@ -9,6 +9,10 @@ describe("stateless attribute", ()=> {
       const expected = "<div>Hello Nino</div>";
       expect(rendered).toEqual(expected);      
    });
+
+   xit("can be placed only on the root node", ()=>{
+
+   });
 });
 
 
@@ -74,6 +78,24 @@ describe("naming convention", ()=> {
       const props = {name: "Nino"};
       const rendered = render(template, props);      
       const expected = `<ex-tag><div>this is div</div><my-div>this is my-div</my-div></ex-tag>`;
+      expect(rendered).toEqual(expected);      
+   });
+});
+
+describe("yield", ()=> {
+   it("yields in a stateless component", ()=>{          
+      const template = "<test stateless><yield /></test>";      
+      const props = {children: "this was yield"};
+      const rendered = render(template, props);      
+      const expected = "<div>this was yield</div>";
+      expect(rendered).toEqual(expected);      
+   });
+
+   xit("yields in a stateful component", ()=>{          
+      const template = "<test><yield /></test>";      
+      const props = {children: "Nino"};
+      const rendered = render(template, props);      
+      const expected = "<div>Nino</div>";
       expect(rendered).toEqual(expected);      
    });
 });

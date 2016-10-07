@@ -35,6 +35,6 @@ export function extract(rtHtml: string, tagName: string, context: Context): stri
       return "";
    }
 
-   return context.options.typescript ? wrapCodeTypeScript(jsCode, context.options.trace, tagName) : wrapCodeCommonJs(jsCode, context.options.trace, tagName);
+   return context.options.typescript ? wrapCodeTypeScript(jsCode, context.options.trace, tagName, context.isStateless) : wrapCodeCommonJs(jsCode, context.options.trace, tagName, context.isStateless);
 }     
 

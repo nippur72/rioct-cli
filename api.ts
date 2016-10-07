@@ -84,25 +84,27 @@ function processTagNode(tag: CheerioElement, context: Context, r: processResult)
    */
 
    // process yield 
-   if(tag.name === "yield") {
+   if(tag.name === "yield") 
+   {
       if(tag.attribs["to"]!==undefined) 
       {
-        // yield to
-        tag.name = "rt-template";
-        tag.attribs["prop"] = tag.attribs["to"];  
-        delete tag.attribs["to"];  
+         // yield to
+         tag.name = "rt-template";
+         tag.attribs["prop"] = tag.attribs["to"];  
+         delete tag.attribs["to"];  
       } 
       else
       {
-        // yield from  
-        if(tag.children.length>1) {
+         // yield from  
+         if(tag.children.length>1) {
             throw "yield/yield from may have no children";
-        }
-        tag.type = "text";
-        tag["isText"] = false;        
-        let fromAttr = tag.attribs["from"];
-        let textExpression = fromAttr ? `{this.props.${fromAttr}()}` : "{this.props.children}";  
-        tag["data"] = textExpression;
+         }
+         tag.type = "text";
+         tag["isText"] = false;        
+         let fromAttr = tag.attribs["from"];
+         let props = context.isStateless ? "props" : "this.props";
+         let textExpression = fromAttr ? `{${props}.${fromAttr}()}` : `{${props}.children}`;  
+         tag["data"] = textExpression;
       }
    }
 
@@ -148,18 +150,6 @@ function processTagNode(tag: CheerioElement, context: Context, r: processResult)
 
       return;
    }
-
-   /*
-   // rt-import are moved to header and deleted from the tree
-   if(tag.name === "stateless") {
-      // insert into header nodes
-      //context.headerNodes.childNodes.push(tag);      
-      
-      // remove from tree (ugly hack)
-      tag.parentNode.children = tag.parentNode.children.filter( child => child.name!=="rt-import" );
-      return;
-   }
-   */
 
    // visit children nodes
    _.each(tag.children, child => processNode(child, context, r));
@@ -213,17 +203,15 @@ function processAttrib(tag: CheerioElement, attrib: string, value: string, conte
    }    
    
    // "stateless" attribute on the root tag
-   if(attrib === "stateless") {
-      /*
+   if(attrib === "stateless") {            
       if(tag.parentNode !== null) {         
-         throw new CompileError(`'stateless' can be placed only on the root node in <${context.tag}>`,
-                                 context.file, 
-                                 getLine(context.html, tag) );
+         throw new CompileError(`'stateless' can be placed only on the root node in <${context.tag}>`, context.file, getLine(context.html, tag));
       }      
-      */
+      
       if(tag.parentNode === null) {         
          delete tag.attribs[attrib];
          tag.attribs["rt-stateless"] = "";
+         context.isStateless = true;
       }
       return;      
    }    
