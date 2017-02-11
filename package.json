@@ -1,6 +1,6 @@
 {
   "name": "rioct-cli",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Converts HTML templates to React",
   "main": "rioct-cli.js",
   "author": "Antonino Porcino",
@@ -16,11 +16,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@types/cheerio": "^0.17.29",
-    "@types/esprima": "^2.1.28",
-    "@types/glob": "^5.0.29",
-    "@types/jasmine": "^2.2.29",
-    "@types/lodash": "0.0.27",
     "blueimp-md5": "^2.3.0",
     "camelcase": "^2.0.1",
     "cheerio": "^0.20.0",
@@ -36,6 +31,11 @@
     "react-templates": "git+https://github.com/nippur72/react-templates.git#scope-syntax-parser"
   },
   "devDependencies": {
+    "@types/cheerio": "^0.17.29",
+    "@types/esprima": "^2.1.28",
+    "@types/glob": "^5.0.29",
+    "@types/jasmine": "^2.2.29",
+    "@types/lodash": "0.0.27",
     "@types/react": "^0.14.27",
     "@types/react-dom": "^0.14.14",
     "react": "^15.2.1",
