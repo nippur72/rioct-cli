@@ -1,4 +1,4 @@
-﻿import { parseScope, scopeItem } from "../parseScope";
+﻿import { parseScope, scopeItem } from "../../parseScope";
 
 describe("parseScope()", ()=> {
    function test(scope: string, expected: scopeItem[]) {

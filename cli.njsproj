@@ -41,13 +41,13 @@
     <TypeScriptCompile Include="regexHelper.ts" />
     <TypeScriptCompile Include="brackets.ts" />
     <TypeScriptCompile Include="wrapCode.ts" />
-    <TypeScriptCompile Include="spec\makeInlineComponent.ts" />
-    <TypeScriptCompile Include="spec\parseBracketCliOptionSpec.ts" />
-    <TypeScriptCompile Include="spec\cleanBracketsSpec.ts" />
-    <TypeScriptCompile Include="spec\componentSpec.ts" />
+    <TypeScriptCompile Include="spec\rt-specs\makeInlineComponent.ts" />
+    <TypeScriptCompile Include="spec\rt-specs\parseBracketCliOptionSpec.ts" />
+    <TypeScriptCompile Include="spec\rt-specs\cleanBracketsSpec.ts" />
+    <TypeScriptCompile Include="spec\rt-specs\componentSpec.ts" />
     <TypeScriptCompile Include="parseScope.ts" />
-    <TypeScriptCompile Include="spec\parseScopeSpec.ts" />
-    <TypeScriptCompile Include="spec\replaceBracketsSpec.ts" />
+    <TypeScriptCompile Include="spec\rt-specs\parseScopeSpec.ts" />
+    <TypeScriptCompile Include="spec\rt-specs\replaceBracketsSpec.ts" />
     <TypeScriptCompile Include="webpack.ts" />
     <TypeScriptCompile Include="processHtml.ts" />
     <TypeScriptCompile Include="CompileError.ts" />
@@ -65,14 +65,16 @@
     <TypeScriptCompile Include="rtExtractor.ts" />
     <TypeScriptCompile Include="location.ts" />
     <TypeScriptCompile Include="Emitter.ts" />
-    <TypeScriptCompile Include="spec\sampleSpec.ts" />
     <TypeScriptCompile Include="utils.ts" />
     <TypeScriptCompile Include="wrapExpression.ts" />
     <TypeScriptCompile Include="wrapHandler.ts" />
     <TypeScriptCompile Include="WrapImports.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="spec\rt-specs\" />
+    <Folder Include="src\" />
     <Folder Include="spec\" />
+    <Folder Include="spec\tsx-specs\" />
     <Folder Include="spec\support\" />
   </ItemGroup>
   <ItemGroup>

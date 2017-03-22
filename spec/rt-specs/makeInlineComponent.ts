@@ -1,8 +1,8 @@
 ﻿import React = require("react");
 import ReactDOMServer = require("react-dom/server");
           
-import { webpack } from "../webpack";
-import { CommandLineOptions, defaultOptions } from "../options";
+import { webpack } from "../../webpack";
+import { CommandLineOptions, defaultOptions } from "../../options";
 import _eval = require("eval");
 
 /**

@@ -1,4 +1,4 @@
-﻿import { cleanBrackets, Brackets } from "../brackets";
+﻿import { cleanBrackets, Brackets } from "../../brackets";
 
 const customBrackets: Brackets = {
    open: "{{",

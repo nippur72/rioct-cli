@@ -1,5 +1,5 @@
 ﻿import { renderComponent as render } from "./makeInlineComponent";
-import { defaultOptions } from "../options";
+import { defaultOptions } from "../../options";
 
 describe("stateless attribute", ()=> {
    it("works correctly", ()=>{          

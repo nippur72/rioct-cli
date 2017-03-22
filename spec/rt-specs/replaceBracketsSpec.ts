@@ -1,6 +1,6 @@
-﻿import { Context } from "../context";
-import { replaceBrackets, Brackets } from "../brackets";
-import { defaultOptions } from "../options";
+﻿import { Context } from "../../context";
+import { replaceBrackets, Brackets } from "../../brackets";
+import { defaultOptions } from "../../options";
 
 const customBrackets = <Context> {
    brackets: { open: "{{", close: "}}" } as Brackets,
