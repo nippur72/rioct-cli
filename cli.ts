@@ -25,6 +25,7 @@ export function main(argv) {
       process.exit(-1);
    }
    entryPoint(options);
+   return 0;
 }
 
 

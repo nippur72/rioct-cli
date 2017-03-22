@@ -1,3 +1,3 @@
-const cli = require('./cli');
-const exitCode = cli.main(process.argv);
+import { main } from "./cli";
+const exitCode = main(process.argv);
 process.exit(exitCode);
