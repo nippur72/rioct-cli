@@ -29,3 +29,8 @@ export function jsString(s: string): string {
    return escodegen.generate(AST);
 }
 
+export function isIdentifier(id: string): boolean
+{
+   return new RegExp("^([$_a-zA-Z]+[$_a-zA-Z0-9]*)$").test(id);
+}
+

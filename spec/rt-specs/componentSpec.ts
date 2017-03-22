@@ -69,16 +69,19 @@ describe("scope attribute", ()=> {
 });
 
 describe("naming convention", ()=> {
-   it("names kebab-case components", ()=>{          
-      const template = `
-<example-tag is="ex-tag">
-   <div>this is div</div>   
-   <my-div>this is my-div</my-div>   
-</example-tag>`;
+   it("retains kebab-cased named components", ()=>{          
+      const template = `<ExampleTag is="ex-tag"><div>this is div</div><my-div>this is my-div</my-div></ExampleTag>`;
       const props = {name: "Nino"};
       const rendered = render(template, props);      
       const expected = `<ex-tag><div>this is div</div><my-div>this is my-div</my-div></ex-tag>`;
       expect(rendered).toEqual(expected);      
+   });
+
+   it("forbids kebab-cased names in tag definition", ()=>{          
+      const template = `<example-tag>Hello</example-tag>`;
+      const props = {name: "Nino"};
+      const rendered = ()=>render(template, props);            ;
+      expect(rendered).toThrow("invalid tag name 'example-tag' for definition");      
    });
 });
 

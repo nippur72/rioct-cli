@@ -6,6 +6,7 @@ import { CompileError } from "./CompileError";
 import { eventList } from "./react-events";
 import { cleanBrackets, replaceBrackets } from "./brackets";
 import { getLine } from "./location";
+import { isIdentifier } from "./utils";
 
 import pascalcase = require("pascalcase");
 
@@ -32,10 +33,17 @@ function processTagNode(tag: CheerioElement, context: Context, r: processResult)
          }
       });
    }
-   
-   // render all tags as "div" by default
-   if(tag.parentNode === null && tag.attribs["is"]===undefined) {
-      tag.attribs["is"] = "div";
+      
+   if(tag.parentNode === null) {
+      // tags are "div"s by default
+      if(tag.attribs["is"]===undefined) {
+         tag.attribs["is"] = "div";
+      }
+
+      // do not allow kebak-case in tag definition
+      if(!isIdentifier(tag.name)) {
+         throw `invalid tag name '${tag.name}' for definition`;
+      }
    }
 
    // replace if, each, repeat, scope, props
@@ -58,13 +66,17 @@ function processTagNode(tag: CheerioElement, context: Context, r: processResult)
       tag.name = "rt-virtual";
    }
 
+   /*
+   // as of 3.0.0, kebab-cased names are not turned into react component
    // turn hypenated names to camelcased, only if they are not "rt-" and if not a known component
    if(tag.name.indexOf("-")!==-1 && tag.name.indexOf("rt-")===-1) {
       const pascalized = pascalcase(tag.name);
       if(context.importNames.indexOf(pascalized) !== -1) {
          tag.name = pascalized;
+         console.log(`pascalized: ${tag.name}`);
       }
    }
+   */
 
    /*
 
